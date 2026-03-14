@@ -1,2 +1,2 @@
 # Onekit
-ONEKIT — Every tool. One place. 16+ free browser-based tools including calculators, converters, generators, dev tools &amp; a multilingual translator. Zero-cost, no signup, no tracking. PWA-ready.
+Free open-source utility toolkit — password generator, unit converter, JSON formatter, Base64 encoder, word counter, BMI calculator, tip calculator, color converter, case converter, lorem ipsum generator, translator + language lab & more. Runs entirely in your browser. No data leaves your device. onekit.tools
