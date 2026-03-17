@@ -732,7 +732,10 @@ export default function App() {
   }, [filterCat, search]);
 
   // ─── TOOL VIEW ──────────────────────────────────────────────────────────
-  if (activeTool && ToolComponent) {
+  
+if (route === 'privacy') return <PrivacyPage />;
+  if (route === 'terms') return <TermsPage />;
+if (activeTool && ToolComponent) {
     return (
       <div style={{ background: '#0a0a0a', minHeight: '100dvh', fontFamily: FONT, color: '#e8e8e8' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid #222222', background: '#111111' }}>
