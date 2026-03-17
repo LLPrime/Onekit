@@ -634,6 +634,79 @@ const TOOL_COMPONENTS = {
 };
 
 // ─── MAIN APP ────────────────────────────────────────────────────────────────
+function PrivacyPage() {
+  const goHome = () => { window.location.hash = ''; };
+  return (
+    <div style={{ background: '#0a0a0a', minHeight: '100dvh', fontFamily: FONT, color: '#e8e8e8' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid #222222', background: '#111111' }}>
+        <button onClick={goHome} style={{ background: 'none', border: 'none', color: '#9370db', fontSize: 20, cursor: 'pointer', padding: 0 }}>{'\u2190'}</button>
+        <div style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>Privacy Policy</div>
+      </div>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 20px 60px', lineHeight: 1.7, fontSize: 14, color: '#cccccc' }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: '#ffffff', marginBottom: 8 }}>Privacy Policy</h1>
+        <p style={{ color: '#888888', marginBottom: 32 }}>Last updated: March 16, 2026</p>
+        <p style={{ marginBottom: 20 }}>OneKit (onekit.tools) is operated by SVRD Holdings. This Privacy Policy explains how we collect, use, and protect information when you use our website and tools.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Information We Collect</h2>
+        <p style={{ marginBottom: 20 }}>OneKit is designed to respect your privacy. Our tools run entirely in your browser. We do not collect, store, or transmit any data you enter into our tools. Your passwords, text, calculations, and conversions never leave your device.</p>
+        <p style={{ marginBottom: 20 }}>We may collect anonymous usage data through Google Analytics, including pages visited, time on site, browser type, device type, and approximate geographic location. This data is aggregated and cannot identify you personally.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Advertising</h2>
+        <p style={{ marginBottom: 20 }}>OneKit uses Google AdSense to display advertisements. Google may use cookies and similar technologies to serve ads based on your prior visits to this or other websites. You can opt out of personalized advertising by visiting Google Ads Settings.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Cookies</h2>
+        <p style={{ marginBottom: 20 }}>OneKit itself does not set cookies. However, third-party services we use (Google Analytics and Google AdSense) may place cookies on your device. You can control cookie behavior through your browser settings.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Data Security</h2>
+        <p style={{ marginBottom: 20 }}>Since our tools process data locally in your browser, your information is protected by your own device security. We do not have servers that store user data. Our site is served over HTTPS to ensure secure connections.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Children's Privacy</h2>
+        <p style={{ marginBottom: 20 }}>OneKit is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Your Rights</h2>
+        <p style={{ marginBottom: 20 }}>If you are located in the European Economic Area (EEA), you have the right to access, correct, or delete any personal data we hold about you. Since we do not collect personal data through our tools, this primarily applies to analytics data managed by Google.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Changes to This Policy</h2>
+        <p style={{ marginBottom: 20 }}>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Contact</h2>
+        <p style={{ marginBottom: 20 }}>For questions about this Privacy Policy, contact us at privacy@onekit.tools.</p>
+        <div style={{ textAlign: 'center', padding: '32px 0 0', borderTop: '1px solid #222222', fontSize: 12, color: '#555555', marginTop: 40 }}>
+          {'\u00A9 ' + new Date().getFullYear() + ' SVRD Holdings \u00B7 '}<span style={{ color: '#9370db' }}>OneKit</span>{' \u00B7 Every tool. One place.'}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TermsPage() {
+  const goHome = () => { window.location.hash = ''; };
+  return (
+    <div style={{ background: '#0a0a0a', minHeight: '100dvh', fontFamily: FONT, color: '#e8e8e8' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid #222222', background: '#111111' }}>
+        <button onClick={goHome} style={{ background: 'none', border: 'none', color: '#9370db', fontSize: 20, cursor: 'pointer', padding: 0 }}>{'\u2190'}</button>
+        <div style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>Terms of Service</div>
+      </div>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 20px 60px', lineHeight: 1.7, fontSize: 14, color: '#cccccc' }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: '#ffffff', marginBottom: 8 }}>Terms of Service</h1>
+        <p style={{ color: '#888888', marginBottom: 32 }}>Last updated: March 16, 2026</p>
+        <p style={{ marginBottom: 20 }}>Welcome to OneKit (onekit.tools), operated by SVRD Holdings. By accessing or using this website, you agree to be bound by these Terms of Service.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Use of Service</h2>
+        <p style={{ marginBottom: 20 }}>OneKit provides free online utility tools for personal and commercial use. You may use our tools for any lawful purpose. You agree not to misuse our services, attempt to gain unauthorized access to our systems, or use our tools to generate harmful or illegal content.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>No Warranty</h2>
+        <p style={{ marginBottom: 20 }}>OneKit tools are provided 'as is' without warranty of any kind, express or implied. While we strive for accuracy, we do not guarantee that our tools will produce error-free results. You are responsible for verifying any output before relying on it for important decisions.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Data Processing</h2>
+        <p style={{ marginBottom: 20 }}>All tool operations are performed locally in your web browser. OneKit does not transmit, store, or process your input data on any server. You retain full ownership and control of any data you enter into our tools.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Intellectual Property</h2>
+        <p style={{ marginBottom: 20 }}>The OneKit name, logo, design, and code are the property of SVRD Holdings. You may not reproduce, distribute, or create derivative works from our website without written permission.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Third-Party Services</h2>
+        <p style={{ marginBottom: 20 }}>OneKit uses third-party services including Google Analytics for usage tracking and Google AdSense for advertising. Your use of our site is also subject to the privacy policies and terms of these third-party providers.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Limitation of Liability</h2>
+        <p style={{ marginBottom: 20 }}>SVRD Holdings shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from your use of OneKit. This includes but is not limited to damages for loss of data, profits, or business opportunities.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Modifications</h2>
+        <p style={{ marginBottom: 20 }}>We reserve the right to modify these Terms at any time. Continued use of OneKit after changes are posted constitutes acceptance of the revised Terms.</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginTop: 32, marginBottom: 12 }}>Contact</h2>
+        <p style={{ marginBottom: 20 }}>For questions about these Terms, contact us at legal@onekit.tools.</p>
+        <div style={{ textAlign: 'center', padding: '32px 0 0', borderTop: '1px solid #222222', fontSize: 12, color: '#555555', marginTop: 40 }}>
+          {'\u00A9 ' + new Date().getFullYear() + ' SVRD Holdings \u00B7 '}<span style={{ color: '#9370db' }}>OneKit</span>{' \u00B7 Every tool. One place.'}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [route, setRoute] = useState(() => window.location.hash.slice(2) || '');
   const [filterCat, setFilterCat] = useState('all');
