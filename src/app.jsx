@@ -806,6 +806,11 @@ if (activeTool && ToolComponent) {
       </div>
 
       <div style={{ textAlign: 'center', padding: '20px', borderTop: '1px solid #222222', fontSize: 12, color: '#555555' }}>
+ <div style={{ textAlign: 'center', padding: '20px', borderTop: '1px solid #222222', fontSize: 12, color: '#555555' }}>
+        <div style={{ marginBottom: 8 }}>
+          <a href='#/privacy' style={{ color: '#888888', textDecoration: 'none', marginRight: 16 }}>Privacy Policy</a>
+          <a href='#/terms' style={{ color: '#888888', textDecoration: 'none' }}>Terms of Service</a>
+        </div>
         {'\u00A9 ' + new Date().getFullYear() + ' SVRD Holdings \u00B7 '}<span style={{ color: '#9370db' }}>OneKit</span>{' \u00B7 Every tool. One place.'}
       </div>
     </div>
