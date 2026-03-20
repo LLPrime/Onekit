@@ -1,3 +1,4 @@
+import ClipBreaker from './components/ClipBreaker';
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 /* ═══════════════════════════════════════════════════════════════════════════
