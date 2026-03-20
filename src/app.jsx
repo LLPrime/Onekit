@@ -24,6 +24,7 @@ const MONO = `'JetBrains Mono', 'Fira Code', monospace`;
 
 // ─── TOOL REGISTRY ───────────────────────────────────────────────────────────
 const CATEGORIES = [
+  { id: 'media', label: 'Media Tools', icon: '🎬' },
   { id: 'calculators', label: 'Calculators', icon: '🧮' },
   { id: 'converters', label: 'Converters', icon: '🔄' },
   { id: 'generators', label: 'Generators', icon: '⚡' },
@@ -46,7 +47,15 @@ const TOOLS = [
   { id: 'case-converter', name: 'Case Converter', cat: 'text', desc: 'UPPER, lower, Title, camelCase' },
   { id: 'json-formatter', name: 'JSON Formatter', cat: 'dev', desc: 'Format & validate JSON' },
   { id: 'regex', name: 'Regex Tester', cat: 'dev', desc: 'Test regular expressions live' },
-  { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'MD5, SHA-1, SHA-256 hashes' },
+  { 
+  id: 'clipbreaker', 
+  name: 'ClipBreaker', 
+  component: ClipBreaker, 
+  category: 'media',  // Use 'dev' if you didn't add the media category
+  description: 'Extract frames from video',
+  icon: '🎬'
+},
+   { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'MD5, SHA-1, SHA-256 hashes' },
 ];
 
 // ─── SHARED COMPONENTS ───────────────────────────────────────────────────────
