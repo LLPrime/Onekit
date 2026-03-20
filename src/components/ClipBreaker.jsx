@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useRef, useCallback, useEffect } from "react";
 
 const VIEWS = { STRIP: "strip", VERTICAL: "vertical", GRID: "grid" };
