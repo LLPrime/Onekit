@@ -208,12 +208,7 @@ export default function ClipBreaker() {
   };
 
   return (
-    <div style={styles.root}>
-      <div style={styles.container}>
-        <div style={styles.header}>
-          <IconFilm />
-          <h1 style={styles.title}>ClipBreaker</h1>
-          <span style={styles.badge}>OneKit</span>
+     </div>
         </div>
         {!videoSrc ? (
           <div style={styles.dropzone} onDragOver={(e) => { e.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(e) => { e.preventDefault(); setDragging(false); handleDrop(e); }} onClick={() => fileInputRef.current?.click()}>
