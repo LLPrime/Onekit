@@ -633,7 +633,7 @@ const TOOL_COMPONENTS = {
   'unit-converter': UnitConverter, 'color-converter': ColorConverter, 'base64': Base64Tool,
   'password-gen': PasswordGen, 'lorem': LoremIpsum, 'uuid': UUIDGen,
   'word-counter': WordCounter, 'case-converter': CaseConverter,
-  'json-formatter': JSONFormatter, 'regex': RegexTester, 'hash-gen': HashGen,
+  'json-formatter': JSONFormatter, 'regex': RegexTester, 'hash-gen': HashGen, 'clipbreaker': ClipBreaker,
 };
 
 // ─── MAIN APP ────────────────────────────────────────────────────────────────
