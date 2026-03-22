@@ -48,7 +48,7 @@ const TOOLS = [
   { id: 'json-formatter', name: 'JSON Formatter', cat: 'dev', desc: 'Format & validate JSON' },
   { id: 'regex', name: 'Regex Tester', cat: 'dev', desc: 'Test regular expressions live' },
   { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'MD5, SHA-1, SHA-256 hashes' },
-  { id: 'clipbreaker', name: 'ClipBreaker', component: , ClipBreaker, description: 'Extract frames from video', icon: },
+  { id: 'clipbreaker', name: 'ClipBreaker', cat: 'media', desc: 'Extract frames from video' },
 ];
 
 // ─── SHARED COMPONENTS ───────────────────────────────────────────────────────
