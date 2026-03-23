@@ -53,6 +53,10 @@ const TOOLS = [
   { id: 'regex', name: 'Regex Tester', cat: 'dev', desc: 'Test regular expressions live' },
   { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'MD5, SHA-1, SHA-256 hashes' },
   { id: 'clipbreaker', name: 'ClipBreaker', cat: 'media', desc: 'Extract frames from video' },
+  { id: 'glyph-stitcher', name: 'Glyph Stitcher', cat: 'media', desc: 'Combine images into one seamless output' },
+  { id: 'ai-text-scrub', name: 'AI-Text Scrub', cat: 'dev', desc: 'Redact PII & keys before pasting to AI' },
+  { id: 'vibe-check', name: 'Vibe-Check', cat: 'media', desc: 'Strip EXIF/GPS metadata from images' },
+  { id: 'llms-txt', name: 'LLMS.txt Generator', cat: 'dev', desc: 'Create AI-agent-readable manifests' },
 ];
 
 // ─── SHARED COMPONENTS ───────────────────────────────────────────────────────
