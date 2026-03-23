@@ -1,12 +1,14 @@
 import { useState, useCallback, useRef } from 'react';
 
-const T = {
+const DEFAULT_T = {
   bg: '#0a0a0a', surface: '#111111', elevated: '#1a1a1a',
   border: '#222222', borderLight: '#333333',
   red: '#8b0000', redLight: '#cc1a1a',
   purple: '#4b0082', purpleLight: '#9370db',
   text: '#e8e8e8', textMuted: '#888888', textDim: '#555555',
-  white: '#ffffff', green: '#22c55e',
+  white: '#ffffff', green: '#22c55e', yellow: '#eab308', orange: '#f97316',
+  scrollTrack: '#0a0a0a', scrollThumb: '#222',
+  selection: '#4b0082', selectionText: '#fff',
 };
 const FONT = `'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif`;
 
@@ -58,7 +60,8 @@ function stripMetadata(file) {
 
 function formatBytes(b) { return b < 1024 ? b + ' B' : b < 1048576 ? (b/1024).toFixed(1) + ' KB' : (b/1048576).toFixed(1) + ' MB'; }
 
-export default function VibeCheck() {
+export default function VibeCheck({ theme }) {
+  const T = theme || DEFAULT_T;
   const [files, setFiles] = useState([]);
   const [processing, setProcessing] = useState(false);
   const [dragging, setDragging] = useState(false);
