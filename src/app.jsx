@@ -687,6 +687,10 @@ function GlobalStyles({ T }) {
     ::selection { background: ${T.selection}; color: ${T.selectionText}; }
     select { background: ${T.elevated} !important; color: ${T.text} !important; }
     option { background: ${T.elevated}; color: ${T.text}; }
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg) translateX(35px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(35px) rotate(-360deg); }
+    }
   `}</style>);
 }
 
@@ -774,7 +778,16 @@ export default function App() {
                 );})}
               </div>
               <div style={{textAlign:'center',padding:'20px',borderTop:'1px solid '+T.border,fontSize:12,color:T.textDim}}>
-                <div style={{marginBottom:8}}><a href='#/features' style={{color:T.textMuted,textDecoration:'none',marginRight:16}}>Features</a><a href='#/privacy' style={{color:T.textMuted,textDecoration:'none',marginRight:16}}>Privacy Policy</a><a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a></div>
+                <div style={{marginBottom:8,display:'flex',justifyContent:'center',alignItems:'center',gap:16,flexWrap:'wrap'}}>
+                  <span style={{position:'relative',display:'inline-block'}}>
+                    <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13}}>Features</a>
+                    <span style={{position:'absolute',pointerEvents:'none',width:70,height:70,left:'50%',top:'50%',marginLeft:-35,marginTop:-35}}>
+                      <span style={{position:'absolute',fontSize:9,fontWeight:700,color:T.purpleLight,opacity:0.85,whiteSpace:'nowrap',animation:'orbitSpin 4s linear infinite',transformOrigin:'35px 35px',left:0,top:0}}>click me →</span>
+                    </span>
+                  </span>
+                  <a href='#/privacy' style={{color:T.textMuted,textDecoration:'none'}}>Privacy Policy</a>
+                  <a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a>
+                </div>
                 {'© '+new Date().getFullYear()+' SVRD Holdings · '}<span style={{color:T.purpleLight}}>OneKit</span>{' · Every tool. One place.'}
               </div>
             </div>
