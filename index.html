@@ -4,11 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0a" />
-    <meta name="description" content="OneKit — Every tool. One place. Free online calculators, converters, generators, text tools, and dev tools." />
-    <title>OneKit — Every tool. One place.</title>
+
+    <!-- Primary SEO -->
+    <title>OneKit — Free Online Tools | Calculators, Converters, Generators & Dev Tools</title>
+    <meta name="description" content="20+ free browser-based tools: calculators, unit converters, password generator, JSON formatter, regex tester, video frame extractor, image stitcher, EXIF stripper, and more. 100% private — no sign-up, no data stored. All processing runs locally on your device." />
+    <meta name="keywords" content="free online tools, calculator, unit converter, password generator, JSON formatter, regex tester, word counter, base64 encoder, UUID generator, color converter, hash generator, video frame extractor, image combiner, EXIF remover, AI text scrub, llms.txt, BMI calculator, tip calculator, case converter, lorem ipsum generator" />
+    <meta name="author" content="SVRD Holdings" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onekit.tools/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://onekit.tools/" />
+    <meta property="og:title" content="OneKit — Free Online Tools | Every tool. One place." />
+    <meta property="og:description" content="20+ free browser-based tools. Calculators, converters, generators, text tools, media tools, and developer utilities. 100% private — runs entirely in your browser." />
+    <meta property="og:site_name" content="OneKit" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OneKit — Free Online Tools | Every tool. One place." />
+    <meta name="twitter:description" content="20+ free browser-based tools. Calculators, converters, generators, media tools & dev tools. 100% private, no sign-up required." />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OneKit",
+      "url": "https://onekit.tools",
+      "description": "Free online utility toolkit with 20+ browser-based tools including calculators, converters, generators, text tools, media tools, and developer utilities. All processing runs locally — 100% private.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SVRD Holdings",
+        "url": "https://onekit.tools"
+      },
+      "featureList": [
+        "Calculator", "Percentage Calculator", "Tip Calculator", "BMI Calculator",
+        "Unit Converter", "Color Converter", "Base64 Encode/Decode",
+        "Password Generator", "Lorem Ipsum Generator", "UUID Generator",
+        "Word Counter", "Case Converter", "JSON Formatter", "Regex Tester",
+        "Hash Generator", "ClipBreaker Video Frame Extractor", "Glyph Stitcher Image Combiner",
+        "AI-Text Scrub PII Redactor", "Vibe-Check EXIF Metadata Stripper", "LLMS.txt Generator"
+      ],
+      "browserRequirements": "Requires JavaScript. Works in all modern browsers.",
+      "softwareVersion": "1.0",
+      "datePublished": "2026-03-16",
+      "inLanguage": "en"
+    }
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
     <style>
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body { background: #0a0a0a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -21,5 +78,59 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Noscript fallback for SEO crawlers that don't execute JS -->
+    <noscript>
+      <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:sans-serif;color:#e8e8e8;background:#0a0a0a;">
+        <h1>OneKit — Free Online Tools</h1>
+        <p>Every tool. One place. 20+ free browser-based utilities. 100% private — all processing runs locally on your device.</p>
+
+        <h2>Calculators</h2>
+        <ul>
+          <li><strong>Calculator</strong> — Basic and scientific calculator for quick math.</li>
+          <li><strong>Percentage Calculator</strong> — Find percentages, calculate percent of, and percentage change.</li>
+          <li><strong>Tip Calculator</strong> — Split bills and calculate tips with custom percentages.</li>
+          <li><strong>BMI Calculator</strong> — Body mass index calculator in imperial and metric units.</li>
+        </ul>
+
+        <h2>Converters</h2>
+        <ul>
+          <li><strong>Unit Converter</strong> — Convert weight, length, temperature, and volume units.</li>
+          <li><strong>Color Converter</strong> — Convert between HEX, RGB, and HSL color formats.</li>
+          <li><strong>Base64 Encode/Decode</strong> — Encode text to Base64 or decode Base64 strings.</li>
+        </ul>
+
+        <h2>Generators</h2>
+        <ul>
+          <li><strong>Password Generator</strong> — Generate secure random passwords with customizable length and character sets.</li>
+          <li><strong>Lorem Ipsum</strong> — Generate placeholder text in paragraphs, sentences, or words.</li>
+          <li><strong>UUID Generator</strong> — Generate RFC 4122 compliant v4 UUIDs.</li>
+        </ul>
+
+        <h2>Text Tools</h2>
+        <ul>
+          <li><strong>Word Counter</strong> — Count words, characters, sentences, paragraphs, and reading time.</li>
+          <li><strong>Case Converter</strong> — Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.</li>
+        </ul>
+
+        <h2>Developer Tools</h2>
+        <ul>
+          <li><strong>JSON Formatter</strong> — Format, validate, and minify JSON data.</li>
+          <li><strong>Regex Tester</strong> — Test regular expressions with live match highlighting.</li>
+          <li><strong>Hash Generator</strong> — Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes.</li>
+          <li><strong>AI-Text Scrub</strong> — Redact API keys, emails, SSNs, and PII before pasting into AI models.</li>
+          <li><strong>LLMS.txt Generator</strong> — Create AI-agent-readable manifest files for your website.</li>
+        </ul>
+
+        <h2>Media Tools</h2>
+        <ul>
+          <li><strong>ClipBreaker</strong> — Extract individual frames from video files.</li>
+          <li><strong>Glyph Stitcher</strong> — Combine multiple images into a single vertical, horizontal, or grid output.</li>
+          <li><strong>Vibe-Check</strong> — Strip EXIF, GPS, and camera metadata from images before sharing.</li>
+        </ul>
+
+        <p>© 2026 SVRD Holdings · OneKit · Every tool. One place.</p>
+      </div>
+    </noscript>
   </body>
 </html>
