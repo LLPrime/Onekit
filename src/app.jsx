@@ -779,12 +779,14 @@ export default function App() {
               </div>
               <div style={{textAlign:'center',padding:'20px',borderTop:'1px solid '+T.border,fontSize:12,color:T.textDim}}>
                 <div style={{marginBottom:8,display:'flex',justifyContent:'center',alignItems:'center',gap:16,flexWrap:'wrap'}}>
-                  <span style={{position:'relative',display:'inline-block',padding:'28px 20px'}}>
-                    <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13,position:'relative',zIndex:1}}>Features</a>
-                    <span style={{position:'absolute',left:'50%',top:'50%',width:0,height:0,pointerEvents:'none'}}>
-                      <span style={{position:'absolute',fontSize:9,fontWeight:700,color:T.purpleLight,opacity:0.8,whiteSpace:'nowrap',animation:'orbitSpin 3.5s linear infinite'}}>click me →</span>
-                    </span>
-                  </span>
+                  <div style={{position:'relative',display:'inline-flex',alignItems:'center',justifyContent:'center',width:100,height:60,overflow:'visible'}}>
+                    <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13,position:'relative',zIndex:2}}>Features</a>
+                    <div style={{position:'absolute',left:'50%',top:'50%',width:0,height:0,zIndex:1,overflow:'visible'}}>
+                      <div style={{animation:'orbitSpin 3.5s linear infinite',position:'absolute',left:0,top:0}}>
+                        <span style={{fontSize:9,fontWeight:700,color:T.purpleLight,opacity:0.8,whiteSpace:'nowrap',position:'absolute',transform:'translate(-50%,-50%)'}}>click me →</span>
+                      </div>
+                    </div>
+                  </div>
                   <a href='#/privacy' style={{color:T.textMuted,textDecoration:'none'}}>Privacy Policy</a>
                   <a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a>
                 </div>
