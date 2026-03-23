@@ -1,13 +1,13 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
 const DEFAULT_T = {
-  bg: T.bg, surface: T.surface, elevated: '#1a1a1a',
-  border: T.border, borderLight: T.borderLight,
+  bg: '#0a0a0a', surface: '#111111', elevated: '#1a1a1a',
+  border: '#222222', borderLight: '#333333',
   red: '#8b0000', redLight: '#cc1a1a',
   purple: '#4b0082', purpleLight: '#9370db',
   text: '#e8e8e8', textMuted: '#888888', textDim: '#555555',
   white: '#ffffff', green: '#22c55e', yellow: '#eab308', orange: '#f97316',
-  scrollTrack: T.bg, scrollThumb: '#222',
+  scrollTrack: '#0a0a0a', scrollThumb: '#222',
   selection: '#4b0082', selectionText: '#fff',
 };
 const VIEWS = { STRIP: "strip", GRID: "grid" };
@@ -142,7 +142,7 @@ async function buildStitchCanvas(framesToUse, layout) {
   c.width = canvasW;
   c.height = canvasH;
   const ctx = c.getContext("2d");
-  ctx.fillStyle = T.bg;
+  ctx.fillStyle = "#0a0a0a";
   ctx.fillRect(0, 0, canvasW, canvasH);
 
   const cellW = canvasW / cols;
