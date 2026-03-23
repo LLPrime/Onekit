@@ -688,8 +688,26 @@ function GlobalStyles({ T }) {
     select { background: ${T.elevated} !important; color: ${T.text} !important; }
     option { background: ${T.elevated}; color: ${T.text}; }
     @keyframes orbitSpin {
-      from { transform: rotate(0deg) translateX(42px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(42px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+    }
+    .features-orbit-link {
+      position: relative;
+      display: inline-block;
+    }
+    .features-orbit-link::after {
+      content: 'click me →';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: 0;
+      margin-top: 0;
+      font-size: 9px;
+      font-weight: 700;
+      opacity: 0.8;
+      white-space: nowrap;
+      pointer-events: none;
+      animation: orbitSpin 3.5s linear infinite;
     }
   `}</style>);
 }
@@ -778,15 +796,8 @@ export default function App() {
                 );})}
               </div>
               <div style={{textAlign:'center',padding:'20px',borderTop:'1px solid '+T.border,fontSize:12,color:T.textDim}}>
-                <div style={{marginBottom:8,display:'flex',justifyContent:'center',alignItems:'center',gap:16,flexWrap:'wrap'}}>
-                  <div style={{position:'relative',display:'inline-flex',alignItems:'center',justifyContent:'center',width:100,height:60,overflow:'visible'}}>
-                    <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13,position:'relative',zIndex:2}}>Features</a>
-                    <div style={{position:'absolute',left:'50%',top:'50%',width:0,height:0,zIndex:1,overflow:'visible'}}>
-                      <div style={{animation:'orbitSpin 3.5s linear infinite',position:'absolute',left:0,top:0}}>
-                        <span style={{fontSize:9,fontWeight:700,color:T.purpleLight,opacity:0.8,whiteSpace:'nowrap',position:'absolute',transform:'translate(-50%,-50%)'}}>click me →</span>
-                      </div>
-                    </div>
-                  </div>
+                <div style={{marginBottom:16,display:'flex',justifyContent:'center',alignItems:'center',gap:16,flexWrap:'wrap'}}>
+                  <a href='#/features' className='features-orbit-link' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13}}>Features</a>
                   <a href='#/privacy' style={{color:T.textMuted,textDecoration:'none'}}>Privacy Policy</a>
                   <a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a>
                 </div>
