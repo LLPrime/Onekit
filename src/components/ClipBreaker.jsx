@@ -1,5 +1,15 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
+const DEFAULT_T = {
+  bg: T.bg, surface: T.surface, elevated: '#1a1a1a',
+  border: T.border, borderLight: T.borderLight,
+  red: '#8b0000', redLight: '#cc1a1a',
+  purple: '#4b0082', purpleLight: '#9370db',
+  text: '#e8e8e8', textMuted: '#888888', textDim: '#555555',
+  white: '#ffffff', green: '#22c55e', yellow: '#eab308', orange: '#f97316',
+  scrollTrack: T.bg, scrollThumb: '#222',
+  selection: '#4b0082', selectionText: '#fff',
+};
 const VIEWS = { STRIP: "strip", GRID: "grid" };
 const MAX_DURATION = 30;
 const MAX_OUTPUT_W = 1920;
@@ -132,7 +142,7 @@ async function buildStitchCanvas(framesToUse, layout) {
   c.width = canvasW;
   c.height = canvasH;
   const ctx = c.getContext("2d");
-  ctx.fillStyle = "#0a0a0a";
+  ctx.fillStyle = T.bg;
   ctx.fillRect(0, 0, canvasW, canvasH);
 
   const cellW = canvasW / cols;
@@ -201,7 +211,8 @@ async function doExport(frames, favorites, videoName, layout, format, pdfMode, q
 }
 
 /* ── Main Component ─────────────────────────────────────────────────────────── */
-export default function ClipBreaker() {
+export default function ClipBreaker({ theme }) {
+  const T = theme || DEFAULT_T;
   const [videoSrc, setVideoSrc] = useState(null);
   const [videoName, setVideoName] = useState("");
   const [frames, setFrames] = useState([]);
@@ -283,29 +294,29 @@ export default function ClipBreaker() {
   const st = {
     controlsBar: { display: "flex", flexWrap: "wrap", gap: 12, alignItems: "flex-end", padding: "16px 0", borderTop: "1px solid #222222", borderBottom: "1px solid #222222", marginBottom: 16 },
     cg: { display: "flex", flexDirection: "column", gap: 6 },
-    label: { fontSize: 10, color: "#888888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 },
-    select: { background: "#1a1a1a", border: "1px solid #222222", borderRadius: 6, color: "#e8e8e8", padding: "8px 12px", fontSize: 12, fontFamily: "inherit", cursor: "pointer" },
-    slider: { WebkitAppearance: "none", width: 100, height: 4, borderRadius: 2, background: "#222222", cursor: "pointer" },
-    processBtn: { background: "#4b0082", color: "#fff", border: "none", borderRadius: 8, padding: "10px 20px", fontSize: 12, fontWeight: 700, fontFamily: "inherit", cursor: "pointer", marginLeft: "auto" },
-    exportBtn: { background: "#8b0000", color: "#fff", border: "none", borderRadius: 8, padding: "10px 16px", fontSize: 11, fontWeight: 700, fontFamily: "inherit", cursor: "pointer" },
-    stitchBtn: { background: "#4b0082", color: "#fff", border: "none", borderRadius: 8, padding: "10px 16px", fontSize: 11, fontWeight: 700, fontFamily: "inherit", cursor: "pointer" },
-    resetBtn: { background: "none", border: "1px solid #333333", borderRadius: 8, padding: "8px 16px", fontSize: 11, fontWeight: 600, fontFamily: "inherit", color: "#888888", cursor: "pointer" },
-    viewToggle: { display: "flex", gap: 4, background: "#1a1a1a", borderRadius: 8, padding: 4 },
-    progressBar: { width: "100%", height: 3, background: "#1a1a1a", borderRadius: 2, overflow: "hidden", marginBottom: 16 },
-    dropzone: { border: "2px dashed #333333", borderRadius: 12, padding: "48px 24px", textAlign: "center", cursor: "pointer", background: "#111111" },
+    label: { fontSize: 10, color: T.textMuted, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 600 },
+    select: { background: T.elevated, border: "1px solid #222222", borderRadius: 6, color: T.text, padding: "8px 12px", fontSize: 12, fontFamily: "inherit", cursor: "pointer" },
+    slider: { WebkitAppearance: "none", width: 100, height: 4, borderRadius: 2, background: T.border, cursor: "pointer" },
+    processBtn: { background: T.purple, color: T.white, border: "none", borderRadius: 8, padding: "10px 20px", fontSize: 12, fontWeight: 700, fontFamily: "inherit", cursor: "pointer", marginLeft: "auto" },
+    exportBtn: { background: T.red, color: T.white, border: "none", borderRadius: 8, padding: "10px 16px", fontSize: 11, fontWeight: 700, fontFamily: "inherit", cursor: "pointer" },
+    stitchBtn: { background: T.purple, color: T.white, border: "none", borderRadius: 8, padding: "10px 16px", fontSize: 11, fontWeight: 700, fontFamily: "inherit", cursor: "pointer" },
+    resetBtn: { background: "none", border: "1px solid #333333", borderRadius: 8, padding: "8px 16px", fontSize: 11, fontWeight: 600, fontFamily: "inherit", color: T.textMuted, cursor: "pointer" },
+    viewToggle: { display: "flex", gap: 4, background: T.elevated, borderRadius: 8, padding: 4 },
+    progressBar: { width: "100%", height: 3, background: T.elevated, borderRadius: 2, overflow: "hidden", marginBottom: 16 },
+    dropzone: { border: "2px dashed #333333", borderRadius: 12, padding: "48px 24px", textAlign: "center", cursor: "pointer", background: T.surface },
     stripContainer: { display: "flex", gap: 12, overflowX: "auto", padding: "12px 0", WebkitOverflowScrolling: "touch" },
     gridContainer: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 10, padding: "12px 0" },
-    frameCard: (sel, fav) => ({ position: "relative", borderRadius: 8, overflow: "hidden", cursor: "pointer", border: sel ? "2px solid #9370db" : fav ? "2px solid #8b0000" : "2px solid transparent", flexShrink: 0, background: "#1a1a1a" }),
-    dlBtn: { position: "absolute", top: 6, right: 6, background: "rgba(10,10,15,0.85)", border: "none", borderRadius: 6, padding: "5px 7px", cursor: "pointer", color: "#9370db", display: "flex", alignItems: "center", justifyContent: "center" },
-    favBtn: (on) => ({ position: "absolute", top: 6, left: 6, background: "rgba(10,10,15,0.85)", border: "none", borderRadius: 6, padding: "4px 7px", cursor: "pointer", color: on ? "#8b0000" : "#555555", fontSize: 14 }),
+    frameCard: (sel, fav) => ({ position: "relative", borderRadius: 8, overflow: "hidden", cursor: "pointer", border: sel ? "2px solid #9370db" : fav ? "2px solid #8b0000" : "2px solid transparent", flexShrink: 0, background: T.elevated }),
+    dlBtn: { position: "absolute", top: 6, right: 6, background: "rgba(10,10,15,0.85)", border: "none", borderRadius: 6, padding: "5px 7px", cursor: "pointer", color: T.purpleLight, display: "flex", alignItems: "center", justifyContent: "center" },
+    favBtn: (on) => ({ position: "absolute", top: 6, left: 6, background: "rgba(10,10,15,0.85)", border: "none", borderRadius: 6, padding: "4px 7px", cursor: "pointer", color: on ? T.red : T.textDim, fontSize: 14 }),
     lightbox: { position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,0.95)", backdropFilter: "blur(12px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 20 },
-    errorMsg: { background: "#1a1a1a", border: "1px solid #8b0000", borderRadius: 8, padding: "12px 16px", color: "#cc1a1a", fontSize: 13, marginBottom: 16 },
-    info: { display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", padding: "12px 0", fontSize: 12, color: "#888888" },
-    exportPanel: { background: "#111111", border: "1px solid #222222", borderRadius: 12, padding: 20, marginBottom: 16 },
+    errorMsg: { background: T.elevated, border: "1px solid #8b0000", borderRadius: 8, padding: "12px 16px", color: T.redLight, fontSize: 13, marginBottom: 16 },
+    info: { display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", padding: "12px 0", fontSize: 12, color: T.textMuted },
+    exportPanel: { background: T.surface, border: "1px solid #222222", borderRadius: 12, padding: 20, marginBottom: 16 },
     epRow: { display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-end", marginBottom: 12 },
   };
 
-  const vBtn = (a) => ({ background: a ? "rgba(147,112,219,0.15)" : "transparent", color: a ? "#9370db" : "#555555", border: "none", borderRadius: 6, cursor: "pointer", padding: "6px" });
+  const vBtn = (a) => ({ background: a ? "rgba(147,112,219,0.15)" : "transparent", color: a ? T.purpleLight : T.textDim, border: "none", borderRadius: 6, cursor: "pointer", padding: "6px" });
 
   /* ── Render ─────────────────────────────────────────────────────────────── */
   return (
@@ -314,9 +325,9 @@ export default function ClipBreaker() {
 
       {!videoSrc ? (
         <div style={st.dropzone} onDragOver={e => e.preventDefault()} onDrop={e => { e.preventDefault(); handleDrop(e); }} onClick={() => fileInputRef.current?.click()}>
-          <div style={{ color: "#9370db", marginBottom: 16 }}><IconUpload /></div>
-          <p style={{ fontSize: 14, color: "#888888", margin: "0 0 4px" }}>Drop a video clip or <span style={{ color: "#9370db", textDecoration: "underline" }}>browse</span></p>
-          <p style={{ fontSize: 11, color: "#555555", margin: 0 }}>Max {MAX_DURATION} seconds</p>
+          <div style={{ color: T.purpleLight, marginBottom: 16 }}><IconUpload /></div>
+          <p style={{ fontSize: 14, color: T.textMuted, margin: "0 0 4px" }}>Drop a video clip or <span style={{ color: T.purpleLight, textDecoration: "underline" }}>browse</span></p>
+          <p style={{ fontSize: 11, color: T.textDim, margin: 0 }}>Max {MAX_DURATION} seconds</p>
           <input ref={fileInputRef} type="file" accept="video/*" hidden onChange={e => { handleFile(e.target.files?.[0]); e.target.value = ""; }} />
         </div>
       ) : (
@@ -325,10 +336,10 @@ export default function ClipBreaker() {
           <canvas ref={canvasRef} style={{ display: "none" }} />
 
           <div style={st.info}>
-            <span><strong style={{ color: "#e8e8e8" }}>{videoName}</strong></span>
+            <span><strong style={{ color: T.text }}>{videoName}</strong></span>
             <span>{videoDuration ? videoDuration.toFixed(1) + "s" : ""}</span>
             <span>{frames.length > 0 ? frames.length + " frames" : ""}</span>
-            {favorites.length > 0 && <span style={{ color: "#8b0000" }}>{favorites.length} selected</span>}
+            {favorites.length > 0 && <span style={{ color: T.red }}>{favorites.length} selected</span>}
             <button style={st.resetBtn} onClick={resetTool}>New Clip</button>
           </div>
 
@@ -355,7 +366,7 @@ export default function ClipBreaker() {
             <button style={st.processBtn} onClick={processVideo} disabled={processing}>{processing ? "Breaking..." : "Break Clip"}</button>
           </div>
 
-          {processing && <div style={st.progressBar}><div style={{ width: progress + "%", height: "100%", background: "#4b0082", transition: "width 0.3s" }} /></div>}
+          {processing && <div style={st.progressBar}><div style={{ width: progress + "%", height: "100%", background: T.purple, transition: "width 0.3s" }} /></div>}
 
           {frames.length > 0 && (
             <>
@@ -369,7 +380,7 @@ export default function ClipBreaker() {
 
               {showExport && (
                 <div style={st.exportPanel}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#e8e8e8", marginBottom: 16 }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: T.text, marginBottom: 16 }}>
                     Export {favorites.length > 0 ? "(" + favorites.length + " selected)" : "(all " + frames.length + " frames)"}
                   </div>
                   <div style={st.epRow}>
@@ -416,7 +427,7 @@ export default function ClipBreaker() {
                 {frames.map((f, i) => (
                   <div key={i} style={st.frameCard(selectedFrame === i, favorites.includes(i))} onClick={() => setSelectedFrame(i)}>
                     <img src={f.src} alt={"Frame " + formatTime(f.time)} style={{ display: "block", width: view === VIEWS.STRIP ? 240 : "100%", height: "auto" }} />
-                    <span style={{ position: "absolute", bottom: 6, left: 6, background: "rgba(10,10,15,0.85)", color: "#9370db", fontSize: 10, padding: "3px 8px", borderRadius: 4 }}>{formatTime(f.time)}</span>
+                    <span style={{ position: "absolute", bottom: 6, left: 6, background: "rgba(10,10,15,0.85)", color: T.purpleLight, fontSize: 10, padding: "3px 8px", borderRadius: 4 }}>{formatTime(f.time)}</span>
                     <button style={st.dlBtn} onClick={e => { e.stopPropagation(); triggerDownload(f.src, safeName(videoName) + "_" + formatTime(f.time).replace(/:/g,"-") + ".webp"); }} title="Download"><IconDownload /></button>
                     <button style={st.favBtn(favorites.includes(i))} onClick={e => { e.stopPropagation(); toggleFav(i); }} title="Select">{favorites.includes(i) ? "\u2605" : "\u2606"}</button>
                   </div>
@@ -425,7 +436,7 @@ export default function ClipBreaker() {
             </>
           )}
 
-          {frames.length === 0 && !processing && <div style={{ textAlign: "center", padding: "48px 20px", color: "#555555" }}><p style={{ margin: 0 }}>Configure settings and hit Break Clip</p></div>}
+          {frames.length === 0 && !processing && <div style={{ textAlign: "center", padding: "48px 20px", color: T.textDim }}><p style={{ margin: 0 }}>Configure settings and hit Break Clip</p></div>}
         </>
       )}
 
@@ -433,7 +444,7 @@ export default function ClipBreaker() {
         <div style={st.lightbox} onClick={() => setSelectedFrame(null)}>
           <img src={frames[selectedFrame].src} alt="Expanded" style={{ maxWidth: "90%", maxHeight: "65vh", borderRadius: 8, border: "1px solid #222222" }} onClick={e => e.stopPropagation()} />
           <div style={{ display: "flex", gap: 12, alignItems: "center", marginTop: 16, flexWrap: "wrap", justifyContent: "center" }}>
-            <span style={{ background: "rgba(10,10,15,0.9)", color: "#9370db", fontSize: 13, fontWeight: 600, padding: "6px 16px", borderRadius: 6 }}>{formatTime(frames[selectedFrame].time)}</span>
+            <span style={{ background: "rgba(10,10,15,0.9)", color: T.purpleLight, fontSize: 13, fontWeight: 600, padding: "6px 16px", borderRadius: 6 }}>{formatTime(frames[selectedFrame].time)}</span>
             <button style={{ ...st.exportBtn, padding: "6px 16px" }} onClick={e => { e.stopPropagation(); triggerDownload(frames[selectedFrame].src, safeName(videoName) + "_" + formatTime(frames[selectedFrame].time).replace(/:/g,"-") + ".webp"); }}>Download</button>
             <button style={{ ...st.stitchBtn, padding: "6px 16px" }} onClick={e => { e.stopPropagation(); toggleFav(selectedFrame); }}>{favorites.includes(selectedFrame) ? "\u2605 Selected" : "\u2606 Select"}</button>
           </div>
