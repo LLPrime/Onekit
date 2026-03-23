@@ -642,6 +642,8 @@ const TOOL_COMPONENTS = {
   'password-gen': PasswordGen, 'lorem': LoremIpsum, 'uuid': UUIDGen,
   'word-counter': WordCounter, 'case-converter': CaseConverter,
   'json-formatter': JSONFormatter, 'regex': RegexTester, 'hash-gen': HashGen, 'clipbreaker': ClipBreaker,
+  'glyph-stitcher': GlyphStitcher, 'ai-text-scrub': AITextScrub, 'vibe-check': VibeCheck,
+  'llms-txt': LLMSTxtGenerator,
 };
 
 // ─── MAIN APP ────────────────────────────────────────────────────────────────
