@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onekit.tools/sitemap.xml
