@@ -247,7 +247,7 @@ function ToolWindow({ win, onFocus, onClose, onMinimize, ToolComp }) {
           <div style={{ flex:1,fontSize:12,fontWeight:700,color:T.text,textAlign:'center' }}>{tool?.name||'Tool'}</div>
           <button onClick={()=>setShowSP(true)} title="Send to Phone" style={{ background:'none',border:'none',color:T.textMuted,cursor:'pointer',fontSize:14,padding:'2px 4px' }}>📱</button>
         </div>
-        <div style={{ flex:1,overflow:'auto',padding:16 }}><ToolComp /></div>
+        <div style={{ flex:1,overflow:'auto',padding:16 }}><ToolComp theme={T} /></div>
       </div>
       {showSP && <SendToPhoneModal toolId={win.toolId} toolName={tool?.name} onClose={()=>setShowSP(false)} />}
     </>
@@ -551,21 +551,72 @@ function TermsPage() {
   </div>);
 }
 
-// ─── HEADER BAR ─────────────────────────────────────────────────────────────
-function HeaderBar({ lumeId, setLumeId, deviceMode, setDeviceMode }) {
+// ─── FLOATING BUBBLE (Lume + Device Toggle) ─────────────────────────────────
+function FloatingBubble({ lumeId, setLumeId, deviceMode, setDeviceMode }) {
   const { T } = useLume();
-  const cycleLume=()=>{const k=Object.keys(LUME_THEMES);const i=k.indexOf(lumeId);const next=k[(i+1)%k.length];setLumeId(next);try{localStorage.setItem('onekit-lume',next);}catch{}};
-  const cycleDevice=()=>{const m=['auto','desktop','mobile'];const i=m.indexOf(deviceMode);const next=m[(i+1)%m.length];setDeviceMode(next);try{localStorage.setItem('onekit-device-mode',next);}catch{}};
-  const dIcons={auto:'🔀',desktop:'🖥️',mobile:'📱'}; const dLabels={auto:'Auto',desktop:'Desktop',mobile:'Mobile'};
+  const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState(() => { try { const s = localStorage.getItem('onekit-bubble-pos'); return s ? JSON.parse(s) : { x: null, y: null }; } catch { return { x: null, y: null }; } });
+  const dragging = useRef(false);
+  const dragStart = useRef({ x: 0, y: 0, px: 0, py: 0 });
+  const bubbleRef = useRef(null);
+  const moved = useRef(false);
+
+  const bx = pos.x ?? (typeof window !== 'undefined' ? window.innerWidth - 56 : 300);
+  const by = pos.y ?? 80;
+
+  const handleDown = (e) => {
+    const touch = e.touches ? e.touches[0] : e;
+    dragging.current = true; moved.current = false;
+    dragStart.current = { x: touch.clientX, y: touch.clientY, px: bx, py: by };
+    e.preventDefault();
+  };
+  useEffect(() => {
+    const handleMove = (e) => {
+      if (!dragging.current) return;
+      const touch = e.touches ? e.touches[0] : e;
+      const dx = touch.clientX - dragStart.current.x, dy = touch.clientY - dragStart.current.y;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved.current = true;
+      const nx = Math.max(0, Math.min(window.innerWidth - 48, dragStart.current.px + dx));
+      const ny = Math.max(0, Math.min(window.innerHeight - 48, dragStart.current.py + dy));
+      setPos({ x: nx, y: ny });
+    };
+    const handleUp = () => {
+      if (dragging.current && pos.x !== null) { try { localStorage.setItem('onekit-bubble-pos', JSON.stringify(pos)); } catch {} }
+      dragging.current = false;
+    };
+    window.addEventListener('mousemove', handleMove); window.addEventListener('mouseup', handleUp);
+    window.addEventListener('touchmove', handleMove, { passive: false }); window.addEventListener('touchend', handleUp);
+    return () => { window.removeEventListener('mousemove', handleMove); window.removeEventListener('mouseup', handleUp); window.removeEventListener('touchmove', handleMove); window.removeEventListener('touchend', handleUp); };
+  }, [pos]);
+
+  const handleTap = () => { if (!moved.current) setOpen(o => !o); };
+  const cycleLume = () => { const k = Object.keys(LUME_THEMES); const i = k.indexOf(lumeId); const next = k[(i+1)%k.length]; setLumeId(next); try { localStorage.setItem('onekit-lume', next); } catch {} };
+  const cycleDevice = () => { const m = ['auto','desktop','mobile']; const i = m.indexOf(deviceMode); const next = m[(i+1)%m.length]; setDeviceMode(next); try { localStorage.setItem('onekit-device-mode', next); } catch {} };
+  const dIcons = { auto: '🔀', desktop: '🖥️', mobile: '📱' }; const dLabels = { auto: 'Auto', desktop: 'Desktop', mobile: 'Mobile' };
+
   return (
-    <div style={{position:'fixed',top:0,right:0,zIndex:99998,display:'flex',gap:4,padding:'8px 12px'}}>
-      <button onClick={cycleDevice} title={'View: '+dLabels[deviceMode]} style={{background:T.surface,border:'1px solid '+T.border,borderRadius:8,padding:'6px 10px',cursor:'pointer',fontSize:13,color:T.text,fontFamily:FONT,fontWeight:600,display:'flex',alignItems:'center',gap:4}}>
-        {dIcons[deviceMode]} <span style={{fontSize:10,color:T.textMuted}}>{dLabels[deviceMode]}</span>
-      </button>
-      <button onClick={cycleLume} title={'Theme: '+LUME_THEMES[lumeId].name} style={{background:T.surface,border:'1px solid '+T.border,borderRadius:8,padding:'6px 10px',cursor:'pointer',fontSize:13,color:T.text,fontFamily:FONT,fontWeight:600,display:'flex',alignItems:'center',gap:4}}>
-        {LUME_THEMES[lumeId].icon} <span style={{fontSize:10,color:T.textMuted}}>{LUME_THEMES[lumeId].name}</span>
-      </button>
-    </div>
+    <>
+      {/* Backdrop to close */}
+      {open && <div style={{ position: 'fixed', inset: 0, zIndex: 99996 }} onClick={() => setOpen(false)} />}
+      <div ref={bubbleRef} style={{ position: 'fixed', left: bx, top: by, zIndex: 99998, userSelect: 'none', touchAction: 'none' }}>
+        {/* Expanded menu */}
+        {open && (
+          <div style={{ position: 'absolute', bottom: 52, right: 0, display: 'flex', flexDirection: 'column', gap: 6, minWidth: 140 }}>
+            <button onClick={cycleLume} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: T.surface, border: '1px solid '+T.border, borderRadius: 10, cursor: 'pointer', fontFamily: FONT, fontSize: 12, fontWeight: 600, color: T.text, whiteSpace: 'nowrap', boxShadow: '0 4px 16px rgba(0,0,0,0.3)' }}>
+              {LUME_THEMES[lumeId].icon} {LUME_THEMES[lumeId].name}
+            </button>
+            <button onClick={cycleDevice} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: T.surface, border: '1px solid '+T.border, borderRadius: 10, cursor: 'pointer', fontFamily: FONT, fontSize: 12, fontWeight: 600, color: T.text, whiteSpace: 'nowrap', boxShadow: '0 4px 16px rgba(0,0,0,0.3)' }}>
+              {dIcons[deviceMode]} {dLabels[deviceMode]}
+            </button>
+          </div>
+        )}
+        {/* Main bubble */}
+        <div onMouseDown={handleDown} onTouchStart={handleDown} onClick={handleTap}
+          style={{ width: 44, height: 44, borderRadius: 22, background: 'linear-gradient(135deg, '+T.red+', '+T.purple+')', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'grab', boxShadow: '0 4px 20px rgba(0,0,0,0.4)', border: '2px solid '+T.border, fontSize: 16, transition: 'transform 0.15s', transform: open ? 'scale(1.1)' : 'scale(1)' }}>
+          {open ? '✕' : '⚙'}
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -608,7 +659,7 @@ export default function App() {
   return (
     <LumeContext.Provider value={lumeValue}>
       <GlobalStyles T={T} />
-      <HeaderBar lumeId={lumeId} setLumeId={setLumeId} deviceMode={deviceMode} setDeviceMode={setDeviceMode} />
+      <FloatingBubble lumeId={lumeId} setLumeId={setLumeId} deviceMode={deviceMode} setDeviceMode={setDeviceMode} />
       <WindowManager windows={windows} setWindows={setWindows}>
         <div style={containerStyle}>
           {route==='privacy'?<PrivacyPage />:
@@ -624,7 +675,7 @@ export default function App() {
                 </div>
               </div>
               <div style={{padding:'0 20px'}}><AdSlot variant="banner" /></div>
-              <div style={{padding:'0 20px 20px'}}><ToolComponent /></div>
+              <div style={{padding:'0 20px 20px'}}><ToolComponent theme={T} /></div>
               <div style={{padding:'0 20px'}}><PlaybookBanner /></div>
               <div style={{padding:'0 20px 40px'}}><AdSlot variant="inline" /></div>
             </div>
