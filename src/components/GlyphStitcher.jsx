@@ -1,12 +1,14 @@
 import { useState, useRef, useCallback } from 'react';
 
-const T = {
+const DEFAULT_T = {
   bg: '#0a0a0a', surface: '#111111', elevated: '#1a1a1a',
   border: '#222222', borderLight: '#333333',
   red: '#8b0000', redLight: '#cc1a1a',
   purple: '#4b0082', purpleLight: '#9370db',
   text: '#e8e8e8', textMuted: '#888888', textDim: '#555555',
   white: '#ffffff', green: '#22c55e', yellow: '#eab308', orange: '#f97316',
+  scrollTrack: '#0a0a0a', scrollThumb: '#222',
+  selection: '#4b0082', selectionText: '#fff',
 };
 const FONT = `'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif`;
 const MONO = `'JetBrains Mono', 'Fira Code', monospace`;
@@ -15,7 +17,8 @@ const LAYOUTS = { VERTICAL: 'vertical', HORIZONTAL: 'horizontal', GRID: 'grid' }
 const FORMATS = ['png', 'jpg', 'webp'];
 const GRID_OPTIONS = ['2x2', '3x3', '4x4'];
 
-export default function GlyphStitcher() {
+export default function GlyphStitcher({ theme }) {
+  const T = theme || DEFAULT_T;
   const [images, setImages] = useState([]);
   const [layout, setLayout] = useState(LAYOUTS.VERTICAL);
   const [gap, setGap] = useState(8);
