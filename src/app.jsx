@@ -69,26 +69,26 @@ const CATEGORIES = [
 ];
 
 const TOOLS = [
-  { id: 'calculator', name: 'Calculator', cat: 'calculators', desc: 'Basic & scientific calculator' },
-  { id: 'percentage', name: 'Percentage Calculator', cat: 'calculators', desc: 'Find percentages instantly' },
-  { id: 'tip', name: 'Tip Calculator', cat: 'calculators', desc: 'Split bills & calculate tips' },
-  { id: 'bmi', name: 'BMI Calculator', cat: 'calculators', desc: 'Body mass index calculator' },
-  { id: 'unit-converter', name: 'Unit Converter', cat: 'converters', desc: 'Weight, length, temp, volume' },
-  { id: 'color-converter', name: 'Color Converter', cat: 'converters', desc: 'HEX, RGB, HSL converter' },
-  { id: 'base64', name: 'Base64 Encode/Decode', cat: 'converters', desc: 'Encode & decode Base64 strings' },
-  { id: 'password-gen', name: 'Password Generator', cat: 'generators', desc: 'Secure random passwords' },
-  { id: 'lorem', name: 'Lorem Ipsum', cat: 'generators', desc: 'Placeholder text generator' },
-  { id: 'uuid', name: 'UUID Generator', cat: 'generators', desc: 'Generate unique UUIDs' },
-  { id: 'word-counter', name: 'Word Counter', cat: 'text', desc: 'Count words, chars, sentences' },
-  { id: 'case-converter', name: 'Case Converter', cat: 'text', desc: 'UPPER, lower, Title, camelCase' },
-  { id: 'json-formatter', name: 'JSON Formatter', cat: 'dev', desc: 'Format & validate JSON' },
-  { id: 'regex', name: 'Regex Tester', cat: 'dev', desc: 'Test regular expressions live' },
-  { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'MD5, SHA-1, SHA-256 hashes' },
-  { id: 'clipbreaker', name: 'ClipBreaker', cat: 'media', desc: 'Extract frames from video' },
-  { id: 'glyph-stitcher', name: 'Glyph Stitcher', cat: 'media', desc: 'Combine images into one seamless output' },
-  { id: 'ai-text-scrub', name: 'AI-Text Scrub', cat: 'dev', desc: 'Redact PII & keys before pasting to AI' },
-  { id: 'vibe-check', name: 'Vibe-Check', cat: 'media', desc: 'Strip EXIF/GPS metadata from images' },
-  { id: 'llms-txt', name: 'LLMS.txt Generator', cat: 'dev', desc: 'Create AI-agent-readable manifests' },
+  { id: 'calculator', name: 'Calculator', cat: 'calculators', desc: 'Basic & scientific calculator', guide: 'A free online calculator for basic and scientific operations. Tap numbers and operators to build expressions, then hit equals. Supports percentage, sign flip, and backspace. Perfect for quick math without opening a separate app. Runs entirely in your browser — nothing is stored or sent anywhere.' },
+  { id: 'percentage', name: 'Percentage Calculator', cat: 'calculators', desc: 'Find percentages instantly', guide: 'Three modes in one tool: find what X% of Y is, figure out what percentage X is of Y, or calculate the percentage change between two numbers. Enter your values and get results instantly. Ideal for discounts, markups, grade calculations, and financial estimates.' },
+  { id: 'tip', name: 'Tip Calculator', cat: 'calculators', desc: 'Split bills & calculate tips', guide: 'Enter your bill total, choose a tip percentage (or type a custom one), and set the number of people splitting. Instantly see the tip amount, total bill, and per-person cost. Quick-select buttons for common tip rates: 10%, 15%, 18%, 20%, 25%.' },
+  { id: 'bmi', name: 'BMI Calculator', cat: 'calculators', desc: 'Body mass index calculator', guide: 'Calculate your Body Mass Index in imperial (feet/inches/lbs) or metric (cm/kg). Enter your height and weight to see your BMI score with a color-coded category: Underweight, Normal, Overweight, or Obese. For informational purposes — consult a healthcare professional for medical advice.' },
+  { id: 'unit-converter', name: 'Unit Converter', cat: 'converters', desc: 'Weight, length, temp, volume', guide: 'Convert between units across four categories: Length (meters, miles, feet, inches, etc.), Weight (kg, lbs, oz, tons), Temperature (Celsius, Fahrenheit, Kelvin), and Volume (liters, gallons, cups, fluid ounces). Select your category, pick your from/to units, and type a value. Conversion happens in real-time.' },
+  { id: 'color-converter', name: 'Color Converter', cat: 'converters', desc: 'HEX, RGB, HSL converter', guide: 'Pick a color with the visual color picker or type a HEX code to instantly see its RGB and HSL equivalents. Each value has a copy button for quick use in CSS, design tools, or code. A live preview swatch shows the selected color.' },
+  { id: 'base64', name: 'Base64 Encode/Decode', cat: 'converters', desc: 'Encode & decode Base64 strings', guide: 'Switch between Encode and Decode mode. Paste plain text to encode it to Base64, or paste a Base64 string to decode it back to readable text. Useful for embedding data in URLs, working with APIs, handling email attachments, or debugging encoded payloads.' },
+  { id: 'password-gen', name: 'Password Generator', cat: 'generators', desc: 'Secure random passwords', guide: 'Generate cryptographically secure random passwords using your browser\'s native crypto API. Adjust the length slider (4-64 characters) and toggle character sets: uppercase, lowercase, numbers, and symbols. A strength meter shows your password\'s security rating. One-click copy to clipboard. No passwords are stored or transmitted — generation happens 100% locally.' },
+  { id: 'lorem', name: 'Lorem Ipsum', cat: 'generators', desc: 'Placeholder text generator', guide: 'Generate placeholder text in three modes: paragraphs, sentences, or individual words. Set the count you need and copy the output with one click. Essential for mockups, wireframes, content layout testing, and design prototyping.' },
+  { id: 'uuid', name: 'UUID Generator', cat: 'generators', desc: 'Generate unique UUIDs', guide: 'Generate RFC 4122 compliant UUIDs (v4) using your browser\'s native crypto API. Set the count (1-50) and generate a batch instantly. Copy individual UUIDs or all at once. Useful for database IDs, API keys, test data, and any system requiring globally unique identifiers.' },
+  { id: 'word-counter', name: 'Word Counter', cat: 'text', desc: 'Count words, chars, sentences', guide: 'Paste or type any text to get instant counts: words, characters (with and without spaces), sentences, paragraphs, and estimated reading time. Perfect for writers checking article length, students hitting word count requirements, or SEO professionals optimizing content.' },
+  { id: 'case-converter', name: 'Case Converter', cat: 'text', desc: 'UPPER, lower, Title, camelCase', guide: 'Transform text between seven case formats: UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case. Paste your text, pick a format, and copy the result. Essential for developers formatting variable names, writers fixing capitalization, and content creators standardizing text.' },
+  { id: 'json-formatter', name: 'JSON Formatter', cat: 'dev', desc: 'Format & validate JSON', guide: 'Paste raw or minified JSON to format it with proper indentation, or take formatted JSON and minify it to a single line. Validates your JSON and shows error messages with details if the syntax is invalid. Copy the result with one click. A must-have for API development, debugging responses, and working with config files.' },
+  { id: 'regex', name: 'Regex Tester', cat: 'dev', desc: 'Test regular expressions live', guide: 'Enter a regular expression pattern and flags, then type or paste a test string. Matches highlight in real-time with their index positions and capture groups. Supports all JavaScript regex flags (g, i, m, s, u). Invaluable for building, testing, and debugging regular expressions for form validation, data parsing, and text processing.' },
+  { id: 'hash-gen', name: 'Hash Generator', cat: 'dev', desc: 'SHA-1, SHA-256, SHA-384, SHA-512', guide: 'Type or paste any text to generate cryptographic hashes using SHA-1, SHA-256, SHA-384, and SHA-512 algorithms via the Web Crypto API. Each hash has a dedicated copy button. Useful for verifying file integrity, generating checksums, and working with security protocols. All hashing runs locally in your browser.' },
+  { id: 'clipbreaker', name: 'ClipBreaker', cat: 'media', desc: 'Extract frames from video', guide: 'Drop a video file (up to 30 seconds) and ClipBreaker extracts individual frames as images. Choose between strip view and grid view. Adjust sensitivity to control how many frames are captured. Select individual frames or mark favorites, then export as individual images or a stitched contact sheet. All processing happens client-side — your video never leaves your device.' },
+  { id: 'glyph-stitcher', name: 'Glyph Stitcher', cat: 'media', desc: 'Combine images into one', guide: 'The inverse of ClipBreaker. Drop multiple images and stitch them into a single output in three layout modes: Vertical stack, Horizontal row, or Grid (2x2, 3x3, 4x4). Drag thumbnails to reorder, adjust gap spacing, set background color or transparency, and choose output format (PNG, JPG, WebP) with quality control. Download the result instantly. 100% client-side — images never upload anywhere.' },
+  { id: 'ai-text-scrub', name: 'AI-Text Scrub', cat: 'dev', desc: 'Redact PII & sensitive data', guide: 'Paste text you\'re about to send to an AI model and AI-Text Scrub automatically detects and highlights sensitive data: API keys (OpenAI, Anthropic, GitHub, AWS, Slack), emails, phone numbers, SSNs, credit card numbers, IP addresses, street addresses, and passwords. Choose your redaction style: labeled placeholders, asterisks, or full removal. Copy the clean text and paste it safely. Toggle individual detection categories on or off. Privacy-first — everything runs in your browser.' },
+  { id: 'vibe-check', name: 'Vibe-Check', cat: 'media', desc: 'Strip EXIF/GPS from images', guide: 'Drop images and Vibe-Check scans for hidden metadata: GPS coordinates, camera make/model, timestamps, and software tags. See exactly what\'s embedded in your photos before sharing. Strip all metadata with one click — the tool redraws the image on a clean canvas, producing a pixel-identical copy with zero metadata. Download cleaned images individually or in bulk. Your photos never leave your browser.' },
+  { id: 'llms-txt', name: 'LLMS.txt Generator', cat: 'dev', desc: 'Create AI-agent manifests', guide: 'Build an llms.txt file for your website — the 2026 standard for making your site readable by AI agents (similar to how robots.txt works for search crawlers). Fill in your site name, URL, and description, then add content sections: About, Documentation, API details, Contact, Pricing, Terms, and custom sections. Preview the output, copy to clipboard, or download as a file. Load an example to see the format in action.' },
 ];
 
 // ─── SHARED STYLES (theme-aware) ────────────────────────────────────────────
@@ -501,6 +501,62 @@ const TOOL_COMPONENTS = {
   'llms-txt': LLMSTxtGenerator,
 };
 
+
+// ─── TOOL GUIDE (collapsible how-to-use) ────────────────────────────────────
+function ToolGuide({ text }) {
+  const { T } = useLume();
+  const [open, setOpen] = useState(false);
+  if (!text) return null;
+  return (
+    <div style={{ margin: '0 0 16px', borderRadius: 10, border: '1px solid '+T.border, overflow: 'hidden' }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: '100%', padding: '12px 16px', background: T.surface, border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: FONT, fontSize: 13, fontWeight: 600, color: T.text }}>
+        <span>How to use this tool</span>
+        <span style={{ color: T.purpleLight, fontSize: 16, transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'rotate(0)' }}>▾</span>
+      </button>
+      {open && (
+        <div style={{ padding: '12px 16px 16px', fontSize: 13, lineHeight: 1.7, color: T.textMuted, borderTop: '1px solid '+T.border }}>
+          {text}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── FEATURES PAGE ──────────────────────────────────────────────────────────
+function FeaturesPage() {
+  const { T } = useLume();
+  const goHome = () => { window.location.hash = ''; };
+  const features = [
+    { icon: '⧉', name: 'Multi-Window', desc: 'Open multiple tools at the same time in independent floating windows. Drag to reposition, minimize to the taskbar, or maximize to full screen. Each window has its own state — use a calculator while referencing a color converter without switching back and forth.' },
+    { icon: '📱', name: 'Send to Phone', desc: 'Tap the phone icon on any tool to generate a QR code linking directly to that tool. Scan with your phone camera to instantly open the same tool on mobile. Also includes a copy-link button for sharing via text or messaging apps.' },
+    { icon: '🌑', name: 'Lume Toggle', desc: 'Three visual themes: True Noir (dark, high-contrast default), Paper White (warm light mode), and Concrete (muted gray). Your preference is saved automatically — OneKit remembers your chosen theme every time you return.' },
+    { icon: '🔀', name: 'Device Toggle', desc: 'Override the automatic responsive layout. Force desktop view on mobile to see the full-width grid, or force mobile view on desktop to preview how tools look on smaller screens. Useful for developers testing responsive behavior.' },
+  ];
+  return (
+    <div style={{ background: T.bg, minHeight: '100dvh', fontFamily: FONT, color: T.text }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderBottom: '1px solid '+T.border, background: T.surface }}>
+        <button onClick={goHome} style={{ background: 'none', border: 'none', color: T.purpleLight, fontSize: 20, cursor: 'pointer', padding: 0 }}>←</button>
+        <div style={{ fontSize: 16, fontWeight: 700, color: T.text }}>Features</div>
+      </div>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 20px 60px' }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: T.text, marginBottom: 8 }}>Platform Features</h1>
+        <p style={{ color: T.textMuted, marginBottom: 32, fontSize: 14, lineHeight: 1.6 }}>OneKit is more than a collection of tools. These platform features make it faster, more flexible, and truly yours.</p>
+        {features.map(f => (
+          <div key={f.name} style={{ padding: 20, borderRadius: 12, background: T.surface, border: '1px solid '+T.border, marginBottom: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <span style={{ fontSize: 20 }}>{f.icon}</span>
+              <span style={{ fontSize: 16, fontWeight: 700, color: T.text }}>{f.name}</span>
+            </div>
+            <p style={{ fontSize: 13, lineHeight: 1.7, color: T.textMuted, margin: 0 }}>{f.desc}</p>
+          </div>
+        ))}
+        <div style={{ textAlign: 'center', padding: '32px 0 0', borderTop: '1px solid '+T.border, fontSize: 12, color: T.textDim, marginTop: 24 }}>
+          {'© ' + new Date().getFullYear() + ' SVRD Holdings · '}<span style={{ color: T.purpleLight }}>OneKit</span>{' · Every tool. One place.'}
+        </div>
+      </div>
+    </div>
+  );
+}
 // ─── PAGES ──────────────────────────────────────────────────────────────────
 function PrivacyPage() {
   const { T } = useLume();
@@ -646,7 +702,7 @@ export default function App() {
   const s=useMemo(()=>makeStyles(T),[T]);
 
   useEffect(()=>{document.documentElement.removeAttribute('data-device');if(deviceMode!=='auto')document.documentElement.setAttribute('data-device',deviceMode);},[deviceMode]);
-  useEffect(()=>{const h=()=>setRoute(window.location.hash.slice(2)||'');window.addEventListener('hashchange',h);return()=>window.removeEventListener('hashchange',h);},[]);
+  useEffect(()=>{const h=()=>{const r=window.location.hash.slice(2)||'';setRoute(r);const tool=TOOLS.find(t=>t.id===r);document.title=tool?tool.name+' — OneKit | Free Online '+tool.name:'OneKit — Every tool. One place. Free Online Tools';};window.addEventListener('hashchange',h);return()=>window.removeEventListener('hashchange',h);},[]);
 
   const navigate=(id)=>{window.location.hash='#/'+id;}; const goHome=()=>{window.location.hash='';setRoute('');};
   const openInWindow=(toolId)=>{const ex=windows.find(w=>w.toolId===toolId);if(ex){const mx=Math.max(...windows.map(w=>w.zIndex),50);setWindows(ws=>ws.map(w=>w.id===ex.id?{...w,zIndex:mx+1,minimized:false}:w));return;}const off=windows.length*30;setWindows(ws=>[...ws,{id:Date.now().toString(),toolId,x:80+off,y:60+off,w:480,h:520,zIndex:100+windows.length,minimized:false}]);};
@@ -663,6 +719,7 @@ export default function App() {
       <WindowManager windows={windows} setWindows={setWindows}>
         <div style={containerStyle}>
           {route==='privacy'?<PrivacyPage />:
+           route==='features'?<FeaturesPage />:
            route==='terms'?<TermsPage />:
            activeTool&&ToolComponent?(
             <div style={{background:T.bg,minHeight:'100dvh',fontFamily:FONT,color:T.text}}>
@@ -675,6 +732,7 @@ export default function App() {
                 </div>
               </div>
               <div style={{padding:'0 20px'}}><AdSlot variant="banner" /></div>
+              <div style={{padding:'0 20px'}}><ToolGuide text={activeTool.guide} /></div>
               <div style={{padding:'0 20px 20px'}}><ToolComponent theme={T} /></div>
               <div style={{padding:'0 20px'}}><PlaybookBanner /></div>
               <div style={{padding:'0 20px 40px'}}><AdSlot variant="inline" /></div>
@@ -686,7 +744,8 @@ export default function App() {
                   <div style={{width:36,height:36,borderRadius:8,background:'linear-gradient(135deg, '+T.red+', '+T.purple+')',display:'flex',alignItems:'center',justifyContent:'center',fontSize:18,fontWeight:800,color:'#ffffff'}}>O</div>
                   <span style={{fontSize:28,fontWeight:800,letterSpacing:-1,color:T.text}}>OneKit</span>
                 </div>
-                <p style={{fontSize:15,color:T.textMuted,maxWidth:400,margin:'0 auto 20px'}}>Every tool. One place.</p>
+                <p style={{fontSize:15,color:T.textMuted,maxWidth:400,margin:'0 auto 12px'}}>Every tool. One place.</p>
+                <p style={{fontSize:12,color:T.textDim,maxWidth:500,margin:'0 auto 20px',lineHeight:1.6}}>Free online calculators, converters, generators, text tools, media tools, and developer utilities. 20+ browser-based tools — 100% private, no sign-up required. All processing happens locally on your device.</p>
                 <div style={{maxWidth:440,margin:'0 auto',position:'relative'}}>
                   <input style={{...s.input,paddingLeft:40,fontSize:15,borderRadius:12,background:T.surface,border:'1px solid '+T.borderLight}} value={search} onChange={e=>setSearch(e.target.value)} placeholder='Search tools...' />
                   <span style={{position:'absolute',left:14,top:'50%',transform:'translateY(-50%)',fontSize:16,color:T.textDim}}>🔍</span>
@@ -715,7 +774,7 @@ export default function App() {
                 );})}
               </div>
               <div style={{textAlign:'center',padding:'20px',borderTop:'1px solid '+T.border,fontSize:12,color:T.textDim}}>
-                <div style={{marginBottom:8}}><a href='#/privacy' style={{color:T.textMuted,textDecoration:'none',marginRight:16}}>Privacy Policy</a><a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a></div>
+                <div style={{marginBottom:8}}><a href='#/features' style={{color:T.textMuted,textDecoration:'none',marginRight:16}}>Features</a><a href='#/privacy' style={{color:T.textMuted,textDecoration:'none',marginRight:16}}>Privacy Policy</a><a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a></div>
                 {'© '+new Date().getFullYear()+' SVRD Holdings · '}<span style={{color:T.purpleLight}}>OneKit</span>{' · Every tool. One place.'}
               </div>
             </div>
