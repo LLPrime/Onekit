@@ -502,45 +502,6 @@ const TOOL_COMPONENTS = {
 };
 
 
-// ─── ORBIT LINK (click me orbits around a link) ────────────────────────────
-function OrbitLink({ href, label, children }) {
-  const { T } = useLume();
-  const wrapRef = useRef(null);
-  const [angle, setAngle] = useState(0);
-  const raf = useRef(null);
-  const start = useRef(Date.now());
-
-  useEffect(() => {
-    const tick = () => {
-      const elapsed = (Date.now() - start.current) / 1000;
-      setAngle((elapsed * (360 / 3.5)) % 360);
-      raf.current = requestAnimationFrame(tick);
-    };
-    raf.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf.current);
-  }, []);
-
-  const rad = (angle * Math.PI) / 180;
-  const radius = 36;
-  const ox = Math.cos(rad) * radius;
-  const oy = Math.sin(rad) * radius;
-
-  return (
-    <div ref={wrapRef} style={{ position: 'relative', display: 'inline-block' }}>
-      <a href={href} style={{ color: T.purpleLight, textDecoration: 'none', fontWeight: 700, fontSize: 13, position: 'relative', zIndex: 2 }}>{children}</a>
-      <span style={{
-        position: 'absolute',
-        left: '50%', top: '50%',
-        transform: 'translate(calc(-50% + ' + ox + 'px), calc(-50% + ' + oy + 'px))',
-        fontSize: 9, fontWeight: 700, color: T.purpleLight,
-        whiteSpace: 'nowrap', pointerEvents: 'none',
-        animation: 'orbitPulse 3.5s ease-in-out infinite',
-        zIndex: 1,
-      }}>{label}</span>
-    </div>
-  );
-}
-
 // ─── TOOL GUIDE (collapsible how-to-use) ────────────────────────────────────
 function ToolGuide({ text }) {
   const { T } = useLume();
@@ -726,7 +687,6 @@ function GlobalStyles({ T }) {
     ::selection { background: ${T.selection}; color: ${T.selectionText}; }
     select { background: ${T.elevated} !important; color: ${T.text} !important; }
     option { background: ${T.elevated}; color: ${T.text}; }
-    @keyframes orbitPulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
   `}</style>);
 }
 
@@ -815,7 +775,7 @@ export default function App() {
               </div>
               <div style={{textAlign:'center',padding:'20px',borderTop:'1px solid '+T.border,fontSize:12,color:T.textDim}}>
                 <div style={{marginBottom:16,display:'flex',justifyContent:'center',alignItems:'center',gap:16,flexWrap:'wrap'}}>
-                  <OrbitLink href='#/features' label='click me →'>Features</OrbitLink>
+                  <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13}}>Features</a>
                   <a href='#/privacy' style={{color:T.textMuted,textDecoration:'none'}}>Privacy Policy</a>
                   <a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a>
                 </div>
