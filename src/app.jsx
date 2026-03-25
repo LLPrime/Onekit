@@ -129,8 +129,8 @@ function PlaybookBanner() {
   return (
     <a href="https://michaeljrelius.gumroad.com/l/lflaex" target="_blank" rel="noopener noreferrer" style={{ display: 'block', margin: '20px 0', padding: '16px 20px', background: 'linear-gradient(135deg, '+T.red+', '+T.purple+')', borderRadius: 12, textDecoration: 'none', color: '#fff', fontFamily: FONT, transition: 'all 0.2s', position: 'relative', overflow: 'hidden' }}>
       <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, opacity: 0.8, marginBottom: 4 }}>From the creator of onekit</div>
-      <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>The Three Lane Playbook Lite, more inside. </div>
-      <div style={{ fontSize: 13, opacity: 0.85 }}>Strategy+Execution as a sample . Find More At the 9th</div>
+      <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>The Three Lane Playbook Lite. </div>
+      <div style={{ fontSize: 13, opacity: 0.85 }}>Strategy + Execution in one system. Free sample inside</div>
       <div style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', fontSize: 24, opacity: 0.3 }}>→</div>
     </a>
   );
