@@ -127,7 +127,7 @@ function AdSlot({ variant = 'banner' }) {
 function PlaybookBanner() {
   const { T } = useLume();
   return (
-    <a href="https://gumroad.com" target="_blank" rel="noopener noreferrer" style={{ display: 'block', margin: '20px 0', padding: '16px 20px', background: 'linear-gradient(135deg, '+T.red+', '+T.purple+')', borderRadius: 12, textDecoration: 'none', color: '#fff', fontFamily: FONT, transition: 'all 0.2s', position: 'relative', overflow: 'hidden' }}>
+    <a href="https://michaeljrelius.gumroad.com/l/htgrk" target="_blank" rel="noopener noreferrer" style={{ display: 'block', margin: '20px 0', padding: '16px 20px', background: 'linear-gradient(135deg, '+T.red+', '+T.purple+')', borderRadius: 12, textDecoration: 'none', color: '#fff', fontFamily: FONT, transition: 'all 0.2s', position: 'relative', overflow: 'hidden' }}>
       <div style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: 1, opacity: 0.8, marginBottom: 4 }}>From SVRD Holdings</div>
       <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>The Three Lane Playbook</div>
       <div style={{ fontSize: 13, opacity: 0.85 }}>Your digital planner for getting things built. Available now.</div>
