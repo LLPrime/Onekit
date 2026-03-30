@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — OneKit | Get in Touch</title>
+<meta name="description" content="Have a question, tool request, or bug report? Contact the OneKit team. We read everything and respond within 48 hours.">
+<link rel="canonical" href="https://onekit.tools/contact">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0f;--surface:#111118;--surface2:#18182a;--border:#1e1e2e;--text:#e2e2ec;--text-muted:#8888aa;--text-dim:#555570;--purple:#9b5de5;--purple-light:#c77dff;--purple-glow:rgba(155,93,229,0.08);--red:#ff3366;--green:#3ddc84}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+  .nav-logo{font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.5px}
+  .nav-logo span{color:var(--red)}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a.active{color:var(--purple-light)}
+
+  /* MAIN */
+  .page-wrapper{max-width:640px;margin:0 auto;padding:56px 20px 80px}
+
+  /* HEADER */
+  .page-label{font-size:.72rem;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;text-align:center}
+  .page-title{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-1px;text-align:center;margin-bottom:8px}
+  .page-desc{font-size:1rem;color:var(--text-muted);text-align:center;margin-bottom:48px}
+
+  /* INFO CARDS */
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px}
+  .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:border-color .2s}
+  .info-card:hover{border-color:var(--purple)}
+  .info-icon{font-size:22px;margin-bottom:8px}
+  .info-label{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+  .info-value{font-size:.88rem;color:var(--text);font-weight:600;margin-top:2px}
+
+  /* FORM */
+  .form-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+  .form-row .form-group{margin-bottom:0}
+  .form-label{font-size:.78rem;font-weight:600;color:var(--text-muted)}
+  .form-label .req{color:var(--red)}
+  .form-input,.form-select,.form-textarea{
+    width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;
+    color:var(--text);font-size:.92rem;font-family:inherit;outline:none;transition:border-color .2s
+  }
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--purple)}
+  .form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238888aa' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .form-select option{background:var(--bg);color:var(--text)}
+  .form-textarea{resize:vertical;min-height:120px}
+  .form-submit{
+    width:100%;padding:14px;background:var(--purple);color:#fff;border:none;border-radius:8px;
+    font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all .2s;margin-top:4px
+  }
+  .form-submit:hover{background:var(--purple-light);transform:translateY(-1px)}
+  .form-note{font-size:.78rem;color:var(--text-dim);text-align:center;margin-top:12px}
+  .form-error{font-size:.82rem;color:var(--red);padding:8px 12px;background:rgba(255,51,102,0.08);border-radius:6px;margin-bottom:16px;display:none}
+  .form-success{text-align:center;padding:48px 20px}
+  .form-success .check{font-size:48px;margin-bottom:16px}
+  .form-success h2{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+  .form-success p{font-size:.92rem;color:var(--text-muted);margin-bottom:24px}
+  .form-success .email-highlight{color:var(--purple)}
+  .form-reset{
+    padding:12px 28px;background:var(--purple);color:#fff;border:none;border-radius:8px;
+    font-size:.88rem;font-weight:600;font-family:inherit;cursor:pointer;transition:all .2s
+  }
+  .form-reset:hover{background:var(--purple-light)}
+
+  /* FAQ */
+  .faq-section{margin-top:64px}
+  .faq-header{text-align:center;margin-bottom:40px}
+  .faq-header h2{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;margin-top:8px}
+  .faq-header p{font-size:.92rem;color:var(--text-muted);margin-top:6px}
+  .faq-category{margin-bottom:32px}
+  .faq-cat-label{font-size:.72rem;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid rgba(155,93,229,0.2)}
+  .faq-item{border-bottom:1px solid var(--border)}
+  .faq-question{
+    width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 0;
+    background:none;border:none;cursor:pointer;text-align:left;gap:16px;font-family:inherit
+  }
+  .faq-question span{font-size:.92rem;font-weight:600;color:var(--text);line-height:1.4}
+  .faq-toggle{font-size:20px;color:var(--purple);transition:transform .2s;flex-shrink:0}
+  .faq-item.open .faq-toggle{transform:rotate(45deg)}
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+    font-size:.88rem;color:var(--text-muted);line-height:1.7;padding:0
+  }
+  .faq-item.open .faq-answer{max-height:200px;padding:0 0 16px 0}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:32px 20px;text-align:center;margin-top:80px}
+  footer p{font-size:.78rem;color:var(--text-dim)}
+  footer a{color:var(--text-muted);text-decoration:none;margin:0 12px;font-size:.78rem}
+  footer a:hover{color:var(--purple-light)}
+  .footer-brand{color:var(--red);font-weight:700}
+
+  @media(max-width:600px){
+    .info-grid{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .nav-links a:not(.active){display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://onekit.tools" class="nav-logo"><span>One</span>Kit</a>
+    <div class="nav-links">
+      <a href="https://onekit.tools">Tools</a>
+      <a href="https://onekit.tools/blog">Blog</a>
+      <a href="https://onekit.tools/contact" class="active">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <div class="page-label">Contact</div>
+  <h1 class="page-title">Get in Touch</h1>
+  <p class="page-desc">Tool requests, bug reports, feedback, or business inquiries — we read everything.</p>
+
+  <!-- Info cards -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon">✉️</div>
+      <div class="info-label">Email</div>
+      <div class="info-value">contact@onekit.tools</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🌐</div>
+      <div class="info-label">Site</div>
+      <div class="info-value">onekit.tools</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">⚡</div>
+      <div class="info-label">Response</div>
+      <div class="info-value">Within 48 hours</div>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="form-card">
+    <div id="form-view">
+      <div class="form-error" id="form-error"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name <span class="req">*</span></label>
+          <input type="text" id="f-name" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email <span class="req">*</span></label>
+          <input type="email" id="f-email" class="form-input" placeholder="you@email.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <select id="f-subject" class="form-select">
+          <option value="general">General Question</option>
+          <option value="tool-request">Tool Request</option>
+          <option value="bug">Bug Report</option>
+          <option value="business">Business Inquiry</option>
+          <option value="feedback">Feedback</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Message <span class="req">*</span></label>
+        <textarea id="f-message" class="form-textarea" placeholder="Tell us what's on your mind..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="sendForm()">Send Message</button>
+      <p class="form-note">This opens your email client with the message pre-filled. No data is collected through this form.</p>
+    </div>
+
+    <div class="form-success" id="success-view" style="display:none;">
+      <div class="check">✓</div>
+      <h2>Message Ready</h2>
+      <p>Your email client should have opened with the message. If it didn't, you can reach us directly at <span class="email-highlight">contact@onekit.tools</span></p>
+      <button class="form-reset" onclick="resetForm()">Send Another Message</button>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section">
+    <div class="faq-header">
+      <div class="page-label">FAQ</div>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know about OneKit.</p>
+    </div>
+
+    <!-- General -->
+    <div class="faq-category">
+      <div class="faq-cat-label">General</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What is OneKit?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">OneKit is a free, browser-based toolkit with 20+ utilities — calculators, converters, generators, text tools, media tools, and developer tools. Everything runs locally in your browser. No accounts, no downloads, no data collection.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Is OneKit really free?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Yes — every tool is 100% free to use. OneKit is supported by non-intrusive ads. We'll never charge for access to any core tool.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do I need to create an account?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">No. OneKit requires zero sign-up. Just open the site and use any tool instantly.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Does OneKit store my data?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">No. All processing happens locally in your browser. Your inputs never leave your device. We don't track, store, or sell any user data.</div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="faq-category">
+      <div class="faq-cat-label">Tools</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How many tools does OneKit have?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">OneKit currently offers 20 tools across 6 categories: Calculators, Converters, Generators, Text Tools, Developer Tools, and Media Tools. We're adding more regularly.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I request a new tool?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Absolutely. Use the contact form above or email us directly. If it fits OneKit's mission of simple, free, browser-based utilities — we'll build it.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do the tools work offline?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">OneKit is a Progressive Web App (PWA). Once loaded, most tools work without an internet connection. Add it to your home screen for app-like access.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Which browsers are supported?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">OneKit works on all modern browsers — Chrome, Firefox, Safari, Edge, and Brave. It's fully responsive on mobile, tablet, and desktop.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I use OneKit tools for commercial work?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Yes. All tool outputs are yours. Use them for personal projects, client work, business operations — no restrictions.</div>
+      </div>
+    </div>
+
+    <!-- Privacy & Ads -->
+    <div class="faq-category">
+      <div class="faq-cat-label">Privacy & Ads</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Why are there ads on OneKit?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Ads keep OneKit free for everyone. We use Google AdSense to display non-intrusive, relevant ads. We never use pop-ups, overlays, or autoplay video ads.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Does OneKit use cookies?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">OneKit uses minimal cookies required for ad delivery through Google AdSense. We do not use tracking cookies for our own purposes. See our Privacy Policy for full details.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How is OneKit different from other tool sites?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">Most online tool sites upload your data to their servers for processing. OneKit processes everything client-side — in your browser, on your device. Your data never leaves your machine. That's not a feature we added. It's how every tool is architected from the ground up.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <a href="https://onekit.tools">Features</a>
+    <a href="https://onekit.tools/blog">Blog</a>
+    <a href="https://onekit.tools/privacy">Privacy Policy</a>
+    <a href="https://onekit.tools/terms">Terms of Service</a>
+    <a href="https://onekit.tools/contact">Contact</a>
+  </div>
+  <p style="margin-top:12px;">© 2026 SVRD Holdings · <span class="footer-brand">OneKit</span> · Every tool. One place.</p>
+</footer>
+
+<script>
+function sendForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const subject = document.getElementById('f-subject').value;
+  const message = document.getElementById('f-message').value.trim();
+  const errorEl = document.getElementById('form-error');
+
+  errorEl.style.display = 'none';
+
+  if (!name || !email || !message) {
+    errorEl.textContent = 'Please fill in all required fields.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errorEl.textContent = 'Please enter a valid email address.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const subjectLabels = {
+    general: 'General Question',
+    'tool-request': 'Tool Request',
+    bug: 'Bug Report',
+    business: 'Business Inquiry',
+    feedback: 'Feedback'
+  };
+
+  const mailto = `mailto:contact@onekit.tools?subject=${encodeURIComponent(
+    `[${subjectLabels[subject]}] from ${name}`
+  )}&body=${encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nSubject: ${subjectLabels[subject]}\n\n${message}`
+  )}`;
+
+  window.open(mailto, '_blank');
+  document.getElementById('form-view').style.display = 'none';
+  document.getElementById('success-view').style.display = 'block';
+}
+
+function resetForm() {
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-email').value = '';
+  document.getElementById('f-subject').value = 'general';
+  document.getElementById('f-message').value = '';
+  document.getElementById('form-error').style.display = 'none';
+  document.getElementById('success-view').style.display = 'none';
+  document.getElementById('form-view').style.display = 'block';
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+  // Open clicked if it wasn't open
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
