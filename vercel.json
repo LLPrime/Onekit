@@ -1,6 +1,10 @@
 {
   "rewrites": [
+    { "source": "/blog/", "destination": "/blog/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/contact/", "destination": "/contact/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" }
-  ]
+  ],
+  "trailingSlash": true
 }
+
