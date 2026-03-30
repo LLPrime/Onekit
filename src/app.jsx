@@ -778,6 +778,8 @@ export default function App() {
                   <a href='#/features' style={{color:T.purpleLight,textDecoration:'none',fontWeight:700,fontSize:13}}>Features</a>
                   <a href='#/privacy' style={{color:T.textMuted,textDecoration:'none'}}>Privacy Policy</a>
                   <a href='#/terms' style={{color:T.textMuted,textDecoration:'none'}}>Terms of Service</a>
+                  <a href="/blog" style={{color:T.textMuted,textDecoration:'none',fontSize:11}}>Blog</a>
+                  <a href="/contact" style={{color:T.textMuted,textDecoration:'none',fontSize:11}}>Contact</a>
                 </div>
                 {'© '+new Date().getFullYear()+' SVRD Holdings · '}<span style={{color:T.purpleLight}}>OneKit</span>{' · Every tool. One place.'}
               </div>
