@@ -3,364 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ✏️ CHANGE THESE FOR EACH POST -->
-<title>5 Free Tools to Protect Your Privacy Online in 2026 — OneKit Blog</title>
-<meta name="description" content="Discover 5 free browser-based tools that strip metadata, redact sensitive data, and generate secure passwords — all without uploading anything to the cloud.">
-<meta name="keywords" content="privacy tools, free online tools, strip EXIF data, redact PII, password generator, OneKit">
-<!-- END CHANGE -->
-
-<link rel="canonical" href="https://onekit.tools/blog/privacy-tools-2026">
+<title>5 JSON Mistakes That Break Your API Calls — OneKit Blog</title>
+<meta name="description" content="Trailing commas, missing brackets, wrong types — the most common JSON errors that break API requests and how to catch them instantly with a free formatter.">
+<meta name="keywords" content="JSON errors, JSON formatter, API debugging, JSON validation, trailing comma, OneKit developer tools">
+<link rel="canonical" href="https://onekit.tools/blog/json-mistakes">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #18182a;
-    --border: #1e1e2e;
-    --text: #e2e2ec;
-    --text-muted: #8888aa;
-    --text-dim: #555570;
-    --purple: #9b5de5;
-    --purple-light: #c77dff;
-    --purple-glow: rgba(155, 93, 229, 0.08);
-    --red: #ff3366;
-    --green: #3ddc84;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ─── NAV (matches OneKit) ──────────────────────────────────────────── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10, 10, 15, 0.9);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 0;
-  }
-  .nav-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .nav-logo {
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-  }
-  .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; gap: 24px; align-items: center; }
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.88rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--purple-light); }
-
-  /* ─── ARTICLE LAYOUT ────────────────────────────────────────────────── */
-  .article-wrapper {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 20px 80px;
-  }
-
-  /* Breadcrumb */
-  .breadcrumb {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    margin-bottom: 24px;
-  }
-  .breadcrumb a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .breadcrumb a:hover { color: var(--purple-light); }
-  .breadcrumb .sep { margin: 0 8px; }
-
-  /* Post meta */
-  .post-category {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--purple);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-    background: var(--purple-glow);
-    padding: 4px 12px;
-    border-radius: 100px;
-  }
-
-  .post-title {
-    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    color: var(--text);
-  }
-
-  .post-meta {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    margin-bottom: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .post-meta .dot {
-    width: 3px; height: 3px;
-    background: var(--text-dim);
-    border-radius: 50%;
-  }
-
-  /* ─── AD SLOT ───────────────────────────────────────────────────────── */
-  .ad-slot {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin: 32px 0;
-    min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ad-slot.leaderboard { min-height: 90px; }
-  .ad-slot.in-article { min-height: 250px; }
-
-  /* ─── ARTICLE CONTENT ───────────────────────────────────────────────── */
-  .article-content h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 40px 0 12px;
-    color: var(--text);
-    letter-spacing: -0.5px;
-  }
-  .article-content h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 28px 0 8px;
-    color: var(--text);
-  }
-  .article-content p {
-    font-size: 1rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    line-height: 1.8;
-  }
-  .article-content a {
-    color: var(--purple-light);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .article-content a:hover { border-bottom-color: var(--purple-light); }
-
-  .article-content ul, .article-content ol {
-    margin: 0 0 20px 20px;
-    color: var(--text-muted);
-  }
-  .article-content li {
-    margin-bottom: 8px;
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
-
-  .article-content blockquote {
-    border-left: 3px solid var(--purple);
-    margin: 24px 0;
-    padding: 16px 20px;
-    background: var(--purple-glow);
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: var(--text-muted);
-  }
-
-  .article-content code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    background: var(--surface2);
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: var(--purple-light);
-  }
-
-  .article-content pre {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    overflow-x: auto;
-    margin: 20px 0;
-  }
-  .article-content pre code {
-    background: none;
-    padding: 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  /* Tool callout card */
-  .tool-callout {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 28px 0;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: border-color 0.2s;
-  }
-  .tool-callout:hover { border-color: var(--purple); }
-  .tool-callout-icon { font-size: 28px; flex-shrink: 0; }
-  .tool-callout-text h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-  .tool-callout-text p {
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    margin: 0;
-  }
-  .tool-callout-link {
-    margin-left: auto;
-    color: var(--purple);
-    font-size: 0.82rem;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .tool-callout-link:hover { color: var(--purple-light); }
-
-  /* ─── TAGS ──────────────────────────────────────────────────────────── */
-  .post-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 40px 0;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-  }
-  .post-tags a {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .post-tags a:hover { border-color: var(--purple); color: var(--purple); }
-
-  /* ─── RELATED POSTS ─────────────────────────────────────────────────── */
-  .related-section {
-    margin-top: 48px;
-    padding-top: 40px;
-    border-top: 1px solid var(--border);
-  }
-  .related-section h3 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--purple);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 20px;
-  }
-  .related-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-  }
-  .related-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: block;
-  }
-  .related-card:hover {
-    border-color: var(--purple);
-    transform: translateY(-2px);
-  }
-  .related-card h4 {
-    font-size: 0.92rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .related-card p {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  /* ─── FOOTER ────────────────────────────────────────────────────────── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 20px;
-    text-align: center;
-  }
-  footer p {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-  }
-  footer a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 0.78rem;
-  }
-  footer a:hover { color: var(--purple-light); }
-  .footer-brand { color: var(--red); font-weight: 700; }
-
-  /* ─── RESPONSIVE ────────────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-    .post-title { font-size: 1.6rem; }
-    .tool-callout { flex-direction: column; align-items: flex-start; }
-    .tool-callout-link { margin-left: 0; margin-top: 8px; }
-    .nav-links a:not(.active) { display: none; }
-  }
+  :root{--bg:#0a0a0f;--surface:#111118;--surface2:#18182a;--border:#1e1e2e;--text:#e2e2ec;--text-muted:#8888aa;--text-dim:#555570;--purple:#9b5de5;--purple-light:#c77dff;--purple-glow:rgba(155,93,229,0.08);--red:#ff3366;--green:#3ddc84}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}.nav-logo{font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.5px}.nav-logo span{color:var(--red)}.nav-links{display:flex;gap:24px}.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text)}.nav-links a.active{color:var(--purple-light)}.article-wrapper{max-width:720px;margin:0 auto;padding:48px 20px 80px}.breadcrumb{font-size:.8rem;color:var(--text-dim);margin-bottom:24px}.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--purple-light)}.breadcrumb .sep{margin:0 8px}.post-category{display:inline-block;font-size:.72rem;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;background:var(--purple-glow);padding:4px 12px;border-radius:100px}.post-title{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}.post-meta{display:flex;gap:20px;align-items:center;font-size:.82rem;color:var(--text-dim);margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--border);flex-wrap:wrap}.post-meta .dot{width:3px;height:3px;background:var(--text-dim);border-radius:50%}.ad-slot{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:20px;text-align:center;font-size:.75rem;color:var(--text-dim);margin:32px 0;min-height:90px;display:flex;align-items:center;justify-content:center}.ad-slot.in-article{min-height:250px}.article-content h2{font-size:1.4rem;font-weight:700;margin:40px 0 12px;letter-spacing:-.5px}.article-content h3{font-size:1.1rem;font-weight:600;margin:28px 0 8px}.article-content p{font-size:1rem;color:var(--text-muted);margin-bottom:20px;line-height:1.8}.article-content a{color:var(--purple-light);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}.article-content a:hover{border-bottom-color:var(--purple-light)}.article-content ul,.article-content ol{margin:0 0 20px 20px;color:var(--text-muted)}.article-content li{margin-bottom:8px;line-height:1.7;font-size:.95rem}.article-content blockquote{border-left:3px solid var(--purple);margin:24px 0;padding:16px 20px;background:var(--purple-glow);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-muted)}.article-content code{font-family:'JetBrains Mono',monospace;font-size:.85rem;background:var(--surface2);padding:2px 8px;border-radius:4px;color:var(--purple-light)}.article-content pre{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin:20px 0}.article-content pre code{background:none;padding:0;font-size:.85rem;color:var(--text-muted)}.tool-callout{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:28px 0;display:flex;align-items:center;gap:16px;transition:border-color .2s}.tool-callout:hover{border-color:var(--purple)}.tool-callout-icon{font-size:28px;flex-shrink:0}.tool-callout-text h4{font-size:.95rem;font-weight:700;margin-bottom:2px}.tool-callout-text p{font-size:.82rem;color:var(--text-dim);margin:0}.tool-callout-link{margin-left:auto;color:var(--purple);font-size:.82rem;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0}.tool-callout-link:hover{color:var(--purple-light)}.post-tags{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0;padding-top:24px;border-top:1px solid var(--border)}.post-tags a{font-size:.75rem;color:var(--text-dim);background:var(--surface);border:1px solid var(--border);padding:4px 12px;border-radius:100px;text-decoration:none;transition:all .2s}.post-tags a:hover{border-color:var(--purple);color:var(--purple)}.related-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--border)}.related-section h3{font-size:.75rem;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}.related-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;transition:all .2s;display:block}.related-card:hover{border-color:var(--purple);transform:translateY(-2px)}.related-card h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}.related-card p{font-size:.78rem;color:var(--text-dim);line-height:1.5}footer{border-top:1px solid var(--border);padding:32px 20px;text-align:center}footer p{font-size:.78rem;color:var(--text-dim)}footer a{color:var(--text-muted);text-decoration:none;margin:0 12px;font-size:.78rem}footer a:hover{color:var(--purple-light)}.footer-brand{color:var(--red);font-weight:700}@media(max-width:600px){.post-title{font-size:1.6rem}.tool-callout{flex-direction:column;align-items:flex-start}.tool-callout-link{margin-left:0;margin-top:8px}.nav-links a:not(.active){display:none}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span>One</span>Kit</a>
@@ -372,166 +25,172 @@
   </div>
 </nav>
 
-<!-- ARTICLE -->
 <article class="article-wrapper">
 
-  <!-- Breadcrumb -->
   <div class="breadcrumb">
     <a href="/">OneKit</a>
     <span class="sep">›</span>
     <a href="/blog">Blog</a>
     <span class="sep">›</span>
-    Privacy Tools 2026
+    JSON Mistakes
   </div>
 
-  <!-- Post header -->
-  <div class="post-category">Privacy & Security</div>
-  <h1 class="post-title">5 Free Tools to Protect Your Privacy Online in 2026</h1>
+  <div class="post-category">Developer</div>
+  <h1 class="post-title">5 JSON Mistakes That Break Your API Calls</h1>
   <div class="post-meta">
     <span>OneKit Team</span>
     <span class="dot"></span>
-    <span>March 28, 2026</span>
+    <span>March 20, 2026</span>
     <span class="dot"></span>
     <span>4 min read</span>
   </div>
 
-  <!-- Top ad slot -->
-  <div class="ad-slot leaderboard">
-    <!-- Replace with your AdSense code -->
-    Ad Slot — Leaderboard (728×90 / Responsive)
-  </div>
+  <div class="ad-slot">Ad Slot — Leaderboard (728×90 / Responsive)</div>
 
-  <!-- ✏️ ARTICLE BODY — Replace this content for each post -->
   <div class="article-content">
 
-    <p>Every time you share an image, paste text into an AI model, or reuse the same password across sites, you're leaving a trail. The good news: you don't need expensive software or technical knowledge to protect yourself. These five free browser-based tools handle the most common privacy risks — and none of them require an account or send your data anywhere.</p>
+    <p>You've written the fetch call. The endpoint is correct. The headers look right. But the API returns a 400 Bad Request — or worse, a cryptic parsing error with no useful information. Nine times out of ten, the problem is in your JSON. Here are the five mistakes that trip up developers constantly, how to spot them, and how to fix them in seconds.</p>
 
-    <h2>1. Strip Location Data from Your Photos</h2>
+    <h2>1. The Trailing Comma</h2>
 
-    <p>Every photo your phone takes embeds EXIF metadata — including your exact GPS coordinates, the device model, and the timestamp. When you share that image on forums, marketplaces, or in messages, that data goes with it unless you remove it first.</p>
+    <p>This is the single most common JSON syntax error. JavaScript allows trailing commas in objects and arrays. JSON does not. Your editor won't flag it. Your linter might miss it. But the API's JSON parser will reject it immediately.</p>
 
-    <!-- Tool callout — link to your actual tool -->
-    <div class="tool-callout">
-      <span class="tool-callout-icon">📸</span>
-      <div class="tool-callout-text">
-        <h4>Vibe-Check</h4>
-        <p>Strip EXIF, GPS, and camera metadata from images before sharing.</p>
-      </div>
-      <a href="/#/vibe-check" class="tool-callout-link">Open Tool →</a>
-    </div>
+    <pre><code>// This breaks
+{
+  "name": "OneKit",
+  "version": "1.0",
+  "tools": 20,  ← trailing comma
+}
 
-    <p>Vibe-Check processes everything locally in your browser. Your images never leave your device — the metadata is stripped client-side and you download the clean version instantly.</p>
+// This works
+{
+  "name": "OneKit",
+  "version": "1.0",
+  "tools": 20
+}</code></pre>
 
-    <h2>2. Redact Sensitive Data Before Pasting Into AI</h2>
-
-    <p>Copying code, emails, or documents into AI chatbots is second nature now. But how often do you check whether that text contains API keys, email addresses, social security numbers, or other personally identifiable information? Probably never.</p>
-
-    <div class="tool-callout">
-      <span class="tool-callout-icon">🧹</span>
-      <div class="tool-callout-text">
-        <h4>AI-Text Scrub</h4>
-        <p>Redact API keys, emails, SSNs, and PII before pasting into AI models.</p>
-      </div>
-      <a href="/#/ai-text-scrub" class="tool-callout-link">Open Tool →</a>
-    </div>
-
-    <p>AI-Text Scrub scans your text for common PII patterns and redacts them before you paste into any AI model. It's a 5-second habit that prevents the kind of data leaks that companies spend millions trying to fix after the fact.</p>
-
-    <!-- Mid-article ad slot -->
-    <div class="ad-slot in-article">
-      <!-- Replace with your AdSense code -->
-      Ad Slot — In-Article (300×250 / Responsive)
-    </div>
-
-    <h2>3. Generate Passwords You'll Never Have to Remember</h2>
-
-    <p>Password reuse is still the number one cause of account compromises. A strong, unique password for every service — combined with a password manager — eliminates this risk entirely.</p>
+    <p>The fix is simple but the problem is hard to see when you're scanning a 200-line payload. A JSON formatter catches it instantly by refusing to parse the invalid structure and pointing you to the exact line.</p>
 
     <div class="tool-callout">
-      <span class="tool-callout-icon">🔐</span>
+      <span class="tool-callout-icon">{}</span>
       <div class="tool-callout-text">
-        <h4>Password Generator</h4>
-        <p>Generate secure random passwords with customizable length and character sets.</p>
+        <h4>JSON Formatter</h4>
+        <p>Format, validate, and minify JSON data with error highlighting.</p>
       </div>
-      <a href="/#/password-generator" class="tool-callout-link">Open Tool →</a>
+      <a href="/#/json-formatter" class="tool-callout-link">Open Tool →</a>
     </div>
 
-    <p>OneKit's password generator uses your browser's cryptographic random number generator — the same mechanism used by professional password managers. Customize length, character types, and copy with one click.</p>
+    <h2>2. Single Quotes Instead of Double Quotes</h2>
 
-    <h2>4. Verify File Integrity with Hashes</h2>
+    <p>JavaScript accepts both single and double quotes for strings. JSON is strict — only double quotes are valid. This catches Python developers especially, since Python's <code>json.dumps()</code> outputs double quotes but developers often write test payloads by hand using single quotes.</p>
 
-    <p>Downloaded software from a third-party site? A hash lets you verify that the file hasn't been tampered with. Compare the SHA-256 hash of your download against the one published by the developer — if they match, the file is clean.</p>
+    <pre><code>// This breaks
+{'name': 'OneKit'}
+
+// This works
+{"name": "OneKit"}</code></pre>
+
+    <p>This error is particularly common when copying data from Python dictionaries, YAML files, or console output and pasting it directly into an API testing tool.</p>
+
+    <div class="ad-slot in-article">Ad Slot — In-Article (300×250 / Responsive)</div>
+
+    <h2>3. Unquoted Keys</h2>
+
+    <p>In JavaScript, object keys don't need quotes if they're valid identifiers. In JSON, every key must be a double-quoted string. No exceptions.</p>
+
+    <pre><code>// This breaks
+{name: "OneKit", tools: 20}
+
+// This works
+{"name": "OneKit", "tools": 20}</code></pre>
+
+    <p>This one shows up most often when developers hand-write JSON payloads or convert JavaScript object literals to JSON without running them through a serializer. If you're writing JSON manually, always quote your keys.</p>
+
+    <h2>4. Wrong Value Types</h2>
+
+    <p>An API expects <code>"count": 20</code> (a number) but you send <code>"count": "20"</code> (a string). The JSON is valid either way, so a syntax validator won't catch it. But the API's schema validation will reject it, and the error message often doesn't tell you which field has the wrong type.</p>
+
+    <p>The most common type mismatches are numbers sent as strings (often from form inputs that capture everything as text), booleans sent as strings (<code>"true"</code> vs <code>true</code>), and null vs the string <code>"null"</code>. A JSON formatter with syntax highlighting makes these visible — strings show up in a different color than numbers and booleans, so type mismatches become obvious at a glance.</p>
+
+    <h2>5. Missing or Mismatched Brackets</h2>
+
+    <p>Deeply nested JSON structures make it easy to lose track of opening and closing brackets. A missing <code>]</code> or <code>}</code> three levels deep produces an error that points to the end of the file — not to the line where the bracket was supposed to be. This sends developers on a line-by-line hunt that wastes time.</p>
+
+    <pre><code>// Where's the missing bracket?
+{
+  "users": [
+    {
+      "name": "Alice",
+      "roles": ["admin", "editor"
+    },
+    {
+      "name": "Bob",
+      "roles": ["viewer"]
+    }
+  ]
+}</code></pre>
+
+    <p>A formatter catches this immediately because it can't parse the structure past the point of failure. Paste it in, see exactly where it breaks, fix the bracket, and move on. What would take five minutes of manual scanning takes two seconds.</p>
+
+    <h2>The Fix That Covers All Five</h2>
+
+    <p>Every one of these mistakes is caught by running your JSON through a formatter before sending it. It's the same logic as running a spell check before sending an email — it takes seconds and catches the errors your eyes skip.</p>
 
     <div class="tool-callout">
-      <span class="tool-callout-icon">🔒</span>
+      <span class="tool-callout-icon">{}</span>
       <div class="tool-callout-text">
-        <h4>Hash Generator</h4>
-        <p>Generate SHA-1, SHA-256, SHA-384, and SHA-512 hashes instantly.</p>
+        <h4>JSON Formatter</h4>
+        <p>Paste your JSON. See errors highlighted with line numbers. Fix and copy the clean version.</p>
       </div>
-      <a href="/#/hash-generator" class="tool-callout-link">Open Tool →</a>
+      <a href="/#/json-formatter" class="tool-callout-link">Open Tool →</a>
     </div>
 
-    <h2>5. Make Your Site Transparent to AI Agents</h2>
-
-    <p>This one's for site owners. As AI agents crawl the web on behalf of users, having an <code>llms.txt</code> file tells those agents exactly what your site does, what's available, and how to interact with it — on your terms.</p>
+    <p>And if you're debugging response data that includes patterns you need to extract — IDs, timestamps, URLs — pairing a formatter with a regex tester gives you a complete debugging workflow without leaving your browser.</p>
 
     <div class="tool-callout">
-      <span class="tool-callout-icon">🤖</span>
+      <span class="tool-callout-icon">🔍</span>
       <div class="tool-callout-text">
-        <h4>LLMS.txt Generator</h4>
-        <p>Create AI-agent-readable manifest files for your website.</p>
+        <h4>Regex Tester</h4>
+        <p>Test regular expressions with live match highlighting against any text.</p>
       </div>
-      <a href="/#/llms-txt-generator" class="tool-callout-link">Open Tool →</a>
+      <a href="/#/regex-tester" class="tool-callout-link">Open Tool →</a>
     </div>
 
-    <blockquote>All five of these tools are free, run in your browser, and never send your data to a server. That's the point — privacy tools that actually respect your privacy.</blockquote>
-
-    <h2>The Bigger Picture</h2>
-
-    <p>Privacy isn't a single product you buy. It's a set of habits. Stripping metadata before sharing photos, scrubbing PII before pasting into AI, using unique passwords, verifying downloads — each takes seconds and compounds over time into a meaningfully more secure digital life.</p>
-
-    <p>Every tool in OneKit is built on this principle: your data stays on your device. No accounts, no uploads, no tracking. Just tools that work.</p>
+    <blockquote>The fastest way to debug a 400 error: paste the payload into a formatter before you start reading the logs. Half the time, the problem was in the JSON all along.</blockquote>
 
   </div>
-  <!-- END ARTICLE BODY -->
 
-  <!-- Tags -->
   <div class="post-tags">
-    <a href="#">privacy</a>
-    <a href="#">security</a>
-    <a href="#">free tools</a>
-    <a href="#">EXIF</a>
-    <a href="#">passwords</a>
-    <a href="#">PII redaction</a>
+    <a href="#">JSON</a>
+    <a href="#">API</a>
+    <a href="#">debugging</a>
+    <a href="#">developer tools</a>
+    <a href="#">web development</a>
+    <a href="#">formatting</a>
   </div>
 
-  <!-- Bottom ad slot -->
-  <div class="ad-slot leaderboard">
-    Ad Slot — Bottom Leaderboard (728×90 / Responsive)
-  </div>
+  <div class="ad-slot">Ad Slot — Bottom Leaderboard (728×90 / Responsive)</div>
 
-  <!-- Related posts -->
   <div class="related-section">
     <h3>More from OneKit</h3>
     <div class="related-grid">
-      <a href="/blog/stop-pasting-secrets-into-chatgpt.html" class="related-card">
-        <h4>Stop Pasting Secrets Into ChatGPT</h4>
-        <p>API keys and personal data end up in AI training data more often than you think.</p>
-      </a>
       <a href="/blog/what-is-llms-txt.html" class="related-card">
         <h4>What Is llms.txt and Does Your Site Need One?</h4>
         <p>AI agents are crawling the web. Here's how to communicate with them on your terms.</p>
       </a>
-      <a href="/blog/json-mistakes.html" class="related-card">
-        <h4>5 JSON Mistakes That Break Your API Calls</h4>
-        <p>Trailing commas, missing brackets, wrong types — catch them instantly.</p>
+      <a href="/blog/stop-pasting-secrets-into-chatgpt.html" class="related-card">
+        <h4>Stop Pasting Secrets Into ChatGPT</h4>
+        <p>API keys and personal data end up in AI training data more often than you think.</p>
+      </a>
+      <a href="/blog/privacy-tools-2026.html" class="related-card">
+        <h4>5 Free Tools to Protect Your Privacy Online in 2026</h4>
+        <p>Strip metadata, redact PII, generate secure passwords — all in your browser.</p>
       </a>
     </div>
   </div>
 
 </article>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <a href="/">Features</a>
@@ -540,7 +199,7 @@
     <a href="/#/terms">Terms of Service</a>
     <a href="/contact">Contact</a>
   </div>
-  <p style="margin-top: 12px;">© 2026 SVRD Holdings · <span class="footer-brand">OneKit</span> · Every tool. One place.</p>
+  <p style="margin-top:12px;">© 2026 SVRD Holdings · <span class="footer-brand">OneKit</span> · Every tool. One place.</p>
 </footer>
 
 </body>
