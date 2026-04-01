@@ -1,10 +1,12 @@
 {
   "rewrites": [
-    { "source": "/blog/", "destination": "/blog/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/contact/", "destination": "/contact/index.html" },
-    { "source": "/contact", "destination": "/contact/index.html" }
-  ],
-  "trailingSlash": true
+    { "source": "/blog/", "destination": "/blog/index.html" },
+    { "source": "/blog/privacy-tools-2026", "destination": "/blog/privacy-tools-2026.html" },
+    { "source": "/blog/stop-pasting-secrets-into-chatgpt", "destination": "/blog/stop-pasting-secrets-into-chatgpt.html" },
+    { "source": "/blog/what-is-llms-txt", "destination": "/blog/what-is-llms-txt.html" },
+    { "source": "/blog/json-mistakes", "destination": "/blog/json-mistakes.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/contact/", "destination": "/contact/index.html" }
+  ]
 }
-
