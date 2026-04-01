@@ -746,6 +746,7 @@ export default function App() {
                 </div>
                 <p style={{fontSize:15,color:T.textMuted,maxWidth:400,margin:'0 auto 12px'}}>Every tool. One place.</p>
                 <p style={{fontSize:12,color:T.textDim,maxWidth:500,margin:'0 auto 20px',lineHeight:1.6}}>Free online calculators, converters, generators, text tools, media tools, and developer utilities. 20+ browser-based tools — 100% private, no sign-up required. All processing happens locally on your device.</p>
+                 <div style={{display:'flex',justifyContent:'center',gap:16,marginBottom:16}}><a href="/blog" style={{fontSize:13,fontWeight:600,color:T.purpleLight,textDecoration:'none',padding:'6px 14px',borderRadius:8,border:'1px solid '+T.border}}>Blog</a><a href="/contact" style={{fontSize:13,fontWeight:600,color:T.purpleLight,textDecoration:'none',padding:'6px 14px',borderRadius:8,border:'1px solid '+T.border}}>Contact</a></div>
                 <div style={{maxWidth:440,margin:'0 auto',position:'relative'}}>
                   <input style={{...s.input,paddingLeft:40,fontSize:15,borderRadius:12,background:T.surface,border:'1px solid '+T.borderLight}} value={search} onChange={e=>setSearch(e.target.value)} placeholder='Search tools...' />
                   <span style={{position:'absolute',left:14,top:'50%',transform:'translateY(-50%)',fontSize:16,color:T.textDim}}>🔍</span>
