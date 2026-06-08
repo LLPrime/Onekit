@@ -1,7 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.onekit.tools" }],
+      "destination": "https://onekit.tools/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/", "destination": "/blog/index.html" },
+    { "source": "/blog/calculator", "destination": "/blog/calculator.html" },
     { "source": "/blog/privacy-tools-2026", "destination": "/blog/privacy-tools-2026.html" },
     { "source": "/blog/stop-pasting-secrets-into-chatgpt", "destination": "/blog/stop-pasting-secrets-into-chatgpt.html" },
     { "source": "/blog/what-is-llms-txt", "destination": "/blog/what-is-llms-txt.html" },
