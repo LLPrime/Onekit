@@ -692,7 +692,7 @@ function GlobalStyles({ T }) {
 
 // ─── MAIN APP ────────────────────────────────────────────────────────────────
 export default function App() {
-  const [route,setRoute]=useState(()=>window.location.hash.slice(2)||'');
+  const [route,setRoute]=useState(()=>{const h=window.location.hash.slice(2);if(h)return h;const p=window.location.pathname.replace(/^\/(tools\/)?/,'').replace(/\/$/,'');return p||'';});
   const [filterCat,setFilterCat]=useState('all'); const [search,setSearch]=useState('');
   const [lumeId,setLumeId]=useState(getLumeFromStorage);
   const [deviceMode,setDeviceMode]=useState(getDeviceModeFromStorage);
