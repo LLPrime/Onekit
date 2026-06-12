@@ -16,6 +16,8 @@
     { "source": "/blog/what-is-llms-txt", "destination": "/blog/what-is-llms-txt.html" },
     { "source": "/blog/json-mistakes", "destination": "/blog/json-mistakes.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/contact/", "destination": "/contact/index.html" }
+    { "source": "/contact/", "destination": "/contact/index.html" },
+    { "source": "/tools/:id", "destination": "/index.html" },
+    { "source": "/((?!assets/|.*\\.[a-zA-Z0-9]+$).*)", "destination": "/index.html" }
   ]
 }
